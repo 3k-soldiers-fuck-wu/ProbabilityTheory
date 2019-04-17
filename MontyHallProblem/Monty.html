@@ -50,7 +50,7 @@
                             <img src="img/girl.png" id="girl">
 
                         </div>
-                        <h3>左面的小人会在主持人询问“是否改变选择的时候”改变自己的选择，而右面的小人则不会改变选择。你认为谁赢的概率更大些呢？</h3>
+                        <h3>左面的Bob会在主持人询问“是否改变选择的时候”改变自己的选择，而右面的Alice则不会改变选择。你认为谁赢的概率更大些呢？</h3>
                         <br>
                         <div class="simulate row">
                             <div class="col-xs-offset-1 col-xs-4">
@@ -59,10 +59,10 @@
                             <div class="col-xs-7">
                                 <div class="btn-group" data-toggle="buttons">
                                     <label class="btn btn-primary">
-                                        <input type="radio" name="characterOpts" id="optBoy"> 左面
+                                        <input type="radio" name="characterOpts" id="optBoy"> Bob
                                     </label>
                                     <label class="btn btn-primary">
-                                        <input type="radio" name="characterOpts" id="optGirl"> 右面
+                                        <input type="radio" name="characterOpts" id="optGirl"> Alice
                                     </label>
                                 </div>
                             </div>
@@ -97,8 +97,15 @@
                                     });
                                 });
                             </script>
-                            <br><br>
-
+                            <br><br><br>
+                            <div class="col-xs-offset-1 col-xs-10">
+                                <div class="alert alert-success alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <strong>Bob胜！</strong>Bob胜利了6780次，Alice胜利了3220次。
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <h1>a</h1>
