@@ -41,6 +41,66 @@
                         <li><a href="#">机器人模拟</a></li>
                         <li><a href="#">讲解</a></li>
                     </ul>
+
+                    <div class="detail">
+                        <h1>wtf</h1>
+                        <div class="animation">
+                            <img src="img/back.png" id="back">
+                            <img src="img/boy.png" id="boy">
+                            <img src="img/girl.png" id="girl">
+
+                        </div>
+                        <h3>左面的小人会在主持人询问“是否改变选择的时候”改变自己的选择，而右面的小人则不会改变选择。你认为谁赢的概率更大些呢？</h3>
+                        <br>
+                        <div class="simulate row">
+                            <div class="col-xs-offset-1 col-xs-4">
+                                <h4>我支持的角色</h4>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="characterOpts" id="optBoy"> 左面
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="characterOpts" id="optGirl"> 右面
+                                    </label>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <div class="col-xs-offset-1 col-xs-4">
+                                <h4>比赛次数</h4>
+                            </div>
+                            <div class="col-xs-7">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="timeOpts" id="opt100"> 100
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="timeOpts" id="opt1k"> 1000
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" name="timeOpts" id="opt1w"> 10000
+                                    </label>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <div class="col-xs-offset-5 col-xs-8 startSimulate">
+                                <button type="button" class="btn btn-success" data-loading-text="模拟中">开始模拟</button>
+                            </div>
+                            <script>
+                                $(function(){
+                                    $(".startSimulate .btn").click(function(){
+                                        $(this).button('loading').delay(1500).queue(function(){
+                                            $(this).button('reset');
+                                            $(this).dequeue()   ;
+                                        });
+                                    });
+                                });
+                            </script>
+                            <br><br>
+
+                        </div>
+                    </div>
                     <h1>a</h1>
                     <h1>a</h1>
                     <h1>a</h1>

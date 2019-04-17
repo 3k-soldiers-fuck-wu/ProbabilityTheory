@@ -13,3 +13,46 @@ body{
     width: 283px;
     height: 60px;
 }
+.detail{
+    width: 100%;
+    /* overflow: auto; */
+    /* height: 100px; */
+    border-color: aqua;
+    border-width: 2px;
+    border-style: inset;
+    /* height: 500px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.detail .simulate{
+    width: 70%;
+}
+.animation{
+    position: relative;
+}
+.animation #boy{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 20%;
+    height: auto;
+}
+.animation #girl{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 20%;
+    height: auto;
+}
+.animation #back{
+    display: block;
+    /* position: absolute; */
+    /* z-index: 1; */
+    width: 100%;
+    height: auto;
+}
