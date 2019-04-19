@@ -44,7 +44,7 @@
                     </ul>
 
                     <div class="interaction">
-                        <h1>fuck</h1>
+                        <h1>我该不该改变自己的选择？</h1>
                         
                         <div class="play">
                             <img src="img/host.png" id="host">
@@ -52,11 +52,11 @@
                             <img src="img/bonus.png" class="doors" id="第二扇门">
                             <img src="img/empty.png" class="doors" id="第三扇门">
                             <div class="ww well well-lg" style="width:100%;">
-                                <p id="w1">欢迎来到《耍你没商量》大赛！（单击继续）</p>
+                                <p id="w1">正宗好凉茶，正宗好游戏。欢迎来到《耍你没商量》大赛！我是主持人华少，我们一起来玩一个竞猜吧！（单击继续）</p>
                                 <p id="w2" style="display:none">现在你的面前有三扇门，只有一扇门的后面有宝石，其他两扇门后面空空如也。（单击继续）</p>
                                 <p id="w3" style="display:none">下面请你猜测哪一扇门后面有宝藏呢？（请点击你选择的门）</p>
-                                <p id="w4" style="display:none">你选择的是第一扇门，但是我要告诉你...（单击继续）</p>
-                                <p id="w5" style="display:none">第二扇门后面是空的！（单击继续）</p>
+                                <p id="w4" style="display:none">你选择的是第一扇门，但是我先不告诉你这扇门后面是什么。（单击继续）</p>
+                                <p id="w5" style="display:none">我却要告诉你，第三扇门后面是空的！（单击继续）</p>
                                 <p id="w6" style="display:none">请问你是否要坚持你上一次的选择呢？
                                     <!-- <div class="btn btn-group"> -->
                                         <button type="button" class="btn btn-default wwbtn">是</button>
@@ -87,7 +87,7 @@
                                         if (x==3){
                                             var door=$(this).context.id;
                                             // console.log(door);
-                                            document.getElementById("w4").innerText="你选择的是"+door+"，但是我要告诉你...（单击继续）";
+                                            document.getElementById("w4").innerText="你选择的是"+door+"，但是我先不告诉你这扇门后面是什么。（单击继续）";
                                             $(".play .ww").children("#w"+x.toString()).hide("slow");
                                             x=x+1;
                                             $(".play .ww").children("#w"+x.toString()).show("fast");
@@ -174,7 +174,7 @@
                                         $(this).button('loading').delay(1500).queue(function(){
                                             $(this).button('reset');
                                             $(this).dequeue();
-                                            
+
                                         });
 
                                     });

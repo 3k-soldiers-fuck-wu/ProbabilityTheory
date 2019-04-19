@@ -32,6 +32,9 @@ body{
     width: 25%;
     height: auto;
 }
+.interaction .play{
+    background-color: cyan;
+}
 .detail{
     width: 100%;
     /* overflow: auto; */
