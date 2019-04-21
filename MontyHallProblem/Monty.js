@@ -38,11 +38,11 @@ $(function(){
             $(this).button('reset');
             $(this).dequeue();
             $("#result").prepend("<div class=\"alert alert-success alert-dismissable\">"+
-    "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
-        "&times;"+
-    "</button>"+
-    "<strong>Bob胜！</strong>Bob胜利了6790次，Alice胜利了3210次。"+
-"</div>")
+                "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
+                    "&times;"+
+                   "</button>"+
+                    "<strong>Bob胜！</strong>Bob胜利了6790次，Alice胜利了3210次。"+
+            "</div>")
         });
 
     });
