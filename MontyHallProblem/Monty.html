@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+        <script src="Monty.js"></script>
         <link rel="stylesheet" href="Monty.css">
     </head>
     <body>
@@ -66,41 +66,6 @@
                                 <p id="w7" style="display:none">你选的门后面有/没有宝石！恭喜/遗憾！（单击再来一次）</p>
                             </div>
                         </div>
-                        <script>
-                            var x=1;
-                            var temp=1;
-                                $(document).ready(function(){
-                                    $(".play .ww").click(function(){
-                                        if (x!=3&&x!=6){
-                                            if (temp==1){
-                                                $(this).children("#w"+x.toString()).hide("slow");
-                                                x=x+1;
-                                                if (x>7) x=2;
-                                                $(this).children("#w"+x.toString()).show("fast");
-                                            }
-                                            else {
-                                                temp=1;
-                                            }
-                                        }
-                                    });
-                                    $(".play .doors").click(function(){
-                                        if (x==3){
-                                            var door=$(this).context.id;
-                                            // console.log(door);
-                                            document.getElementById("w4").innerText="你选择的是"+door+"，但是我先不告诉你这扇门后面是什么。（单击继续）";
-                                            $(".play .ww").children("#w"+x.toString()).hide("slow");
-                                            x=x+1;
-                                            $(".play .ww").children("#w"+x.toString()).show("fast");
-                                        }
-                                    });
-                                    $(".wwbtn").click(function(){
-                                        $(this).parent("#w6").hide("slow");
-                                        x=x+1;
-                                        $(".play .ww").children("#w"+x.toString()).show("fast");
-                                        temp=0;
-                                    })
-                                });
-                        </script>
                         <!-- <script>
                             $(document).ready(function(){
                               $(".ex .hide").click(function(){
@@ -168,26 +133,14 @@
                             <div class="col-xs-offset-5 col-xs-8 startSimulate">
                                 <button type="button" class="btn btn-success" data-loading-text="模拟中">开始模拟</button>
                             </div>
-                            <script>
-                                $(function(){
-                                    $(".startSimulate .btn").click(function(){
-                                        $(this).button('loading').delay(1500).queue(function(){
-                                            $(this).button('reset');
-                                            $(this).dequeue();
-
-                                        });
-
-                                    });
-                                });
-                            </script>
                             <br><br><br>
-                            <div class="col-xs-offset-1 col-xs-10">
-                                <div class="alert alert-success alert-dismissable">
+                            <div class="col-xs-offset-1 col-xs-10" id="result">
+                                <!-- <div class="alert alert-success alert-dismissable">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                                         &times;
                                     </button>
                                     <strong>Bob胜！</strong>Bob胜利了6780次，Alice胜利了3220次。
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
