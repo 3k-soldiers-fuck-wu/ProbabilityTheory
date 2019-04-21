@@ -37,13 +37,61 @@ $(function(){
         $(this).button('loading').delay(1500).queue(function(){
             $(this).button('reset');
             $(this).dequeue();
+            var times=getTimes();
+            var result=simulator(times);
+            var bob=result[0];
+            var alice=result[1];
+            var winner="Bob";
+            if(bob<alice){
+                winner="Alice";
+            }
             $("#result").prepend("<div class=\"alert alert-success alert-dismissable\">"+
                 "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
                     "&times;"+
                    "</button>"+
-                    "<strong>Bob胜！</strong>Bob胜利了6790次，Alice胜利了3210次。"+
+                    "<strong>"+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
             "</div>")
         });
 
     });
 });
+function simulator(times){
+    let BobGetCar = 0;
+    let AliceGetCar=0;
+    for(let i=0;i<times;++i){
+        let select=Math.floor(Math.random()*3+1);
+        let answer=Math.floor(Math.random()*3+1);
+        if(select===answer){
+            AliceGetCar+=1;
+        }else{
+            BobGetCar+=1;
+        }
+    }
+    
+    return [BobGetCar,AliceGetCar];
+}
+
+function getTimes(){
+    times1b=document.getElementById("opt100");
+    times1k=document.getElementById("opt1k");
+    times1w=document.getElementById("opt1w");
+    if(times1b.checked){
+        return 100;
+    }else if(times1k.checked){
+        return 1000;
+    }else if(times1w.checked){
+        return 10000;
+    }
+}
+
+function getChoice(){
+    var bob=document.getElementById("optBoy");
+    var alice=ducument.getElementById("optGirl");
+    if(bob.checked){
+        return "Bob";
+    }else if(alice.checked){
+        return "Alice";
+    }else{
+        return null;
+    }
+}
