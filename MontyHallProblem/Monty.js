@@ -100,24 +100,29 @@ $(document).ready(function(){
 
 $(function(){
     $(".startSimulate .btn").click(function(){
-        $(this).button('loading').delay(1500).queue(function(){
-            $(this).button('reset');
-            $(this).dequeue();
-            var times=getTimes();
-            var result=simulator(times);
-            var bob=result[0];
-            var alice=result[1];
-            var winner="Bob";
-            if(bob<alice){
-                winner="Alice";
-            }
-            $("#result").prepend("<div class=\"alert alert-success alert-dismissable\">"+
-                "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
-                    "&times;"+
-                   "</button>"+
-                    "<strong>"+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
-            "</div>")
-        });
+        var times=getTimes();
+        var choice=getChoice();
+        if (times==false||choice==false) alert("fuck you");
+        else{
+            $(this).button('loading').delay(1500).queue(function(){
+                $(this).button('reset');
+                $(this).dequeue();
+                var result=simulator(times);
+                var bob=result[0];
+                var alice=result[1];
+                var winner="Bob";
+                if(bob<alice){
+                    winner="Alice";
+                }
+                $("#result").prepend("<div class=\"alert alert-success alert-dismissable\">"+
+                    "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
+                        "&times;"+
+                       "</button>"+
+                        "<strong>"+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
+                "</div>")
+            });
+
+        }
 
     });
     // $("#chooseYes").click(function(){
@@ -157,16 +162,19 @@ function getTimes(){
     }else if(times1w.checked){
         return 10000;
     }
+    else{
+        return false;
+    }
 }
 
 function getChoice(){
     var bob=document.getElementById("optBoy");
-    var alice=ducument.getElementById("optGirl");
+    var alice=document.getElementById("optGirl");
     if(bob.checked){
         return "Bob";
     }else if(alice.checked){
         return "Alice";
     }else{
-        return null;
+        return false;
     }
 }
