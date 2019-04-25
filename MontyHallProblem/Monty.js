@@ -111,14 +111,18 @@ $(function(){
                 var bob=result[0];
                 var alice=result[1];
                 var winner="Bob";
+                var message="恭喜你，你猜对了！"
                 if(bob<alice){
                     winner="Alice";
+                }
+                if(winner!==choice){
+                    message="很遗憾，你猜错了。";
                 }
                 $("#result").prepend("<div class=\"alert alert-success alert-dismissable\">"+
                     "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
                         "&times;"+
                        "</button>"+
-                        "<strong>"+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
+                        "<strong>"+message+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
                 "</div>")
             });
 
