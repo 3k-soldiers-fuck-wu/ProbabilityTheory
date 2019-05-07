@@ -29,11 +29,19 @@ $(document).ready(function(){
             x=x+1;
             $p2.show("fast");
             $("#num1").append('<h1>第一个数字是'+numOne+'</h1>');
-        }else if(x===3){
+        }
+        else if(x==3){
+            x=x+1;
+        }
+        else if(x===4){
             $panelBody.children("#w3").hide("slow");
             $p1.show("fast")
             numOne=randomNum(-200,200);
             numTwo=randomNum(-200,200);
+            x=1;
+            console.log($panelBody.children("h1"));
+            $("#num1").remove();
+            $("#num2").remove();
         }
     })
     //生成数字和判断对错
@@ -58,27 +66,29 @@ $(document).ready(function(){
         }else{
             alert("请选择！")
         }
-    })
+    });
 })
 //讲解的代码
 //有bug
 $(function(){
     $("#saveUser").click(function(){
-        var numOne=$("#numOne").text;
-        var numTwo=$("#numTwo").text;
+        $("#answer").remove();
+        var numOne=$("#numOne").val();
+        var numTwo=$("#numTwo").val();
+        $("#computer").append("<div id=\"answer\"></div>")
         if(numOne<0.5){
-            $("#showAws").append('<h3>基准数大于第一个数，所以电脑的答案是<h1>小</h1></h3>');
+            $("#answer").append('<h3>基准数大于第一个数，所以电脑的答案是<h1>小</h1></h3>');
             if(numOne<numTwo){
-                $("#showAws").append('<h3>很显然，电脑答对了</h3>');
+                $("#answer").append('<h3>很显然，电脑答对了</h3>');
             }else{
-                $("#showAws").append('<h3>很显然，电脑答错了</h3>');
+                $("#answer").append('<h3>很显然，电脑答错了</h3>');
             }
         }else{
-            $("#showAws").append('<h3>基准数小于第一个数，所以电脑的答案是<h1>大</h1></h3>');
+            $("#answer").append('<h3>基准数小于第一个数，所以电脑的答案是<h1>大</h1></h3>');
             if(numOne<numTwo){
-                $("#showAws").append('<h3>很显然，电脑答错了</h3>');
+                $("#answer").append('<h3>很显然，电脑答错了</h3>');
             }else{
-                $("#showAws").append('<h3>很显然，电脑答对了</h3>');
+                $("#answer").append('<h3>很显然，电脑答对了</h3>');
             }
         }
     })
