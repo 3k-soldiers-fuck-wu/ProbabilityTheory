@@ -1,199 +1,319 @@
 <!DOCTYPE html>
 <html lang="zh">
-    <head>
-        <meta charset="UTF-8">
-        <title>相亲问题-最优停止理论</title>
-        <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="optimal.js"></script>
-        <link rel="stylesheet" href="optimal.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a href="../index.html">
-                        <img src="../logo.png" height="45px">
-                    </a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"> 注册</span></a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"> 登录</span></a></li>
+
+<head>
+    <meta charset="utf-8">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+    <!-- 这个是本页面用到的css,js -->
+    <link href="index.css" rel="stylesheet">
+    <script src="index.js"></script>
+    <title>相亲问题</title>
+
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            <!--
+                          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                      -->
+            <div class="logo">
+                <a href="http://study.maplefzh.cn" class="simple-text logo-mini">
+                    <div class="logo-image-small">
+                        <img src="../assets/img/logo-small.png">
+                    </div>
+                </a>
+                <a href="http://study.maplefzh.cn" class="simple-text logo-normal">
+                    概率论啊啊
+                </a>
+            </div>
+            <!-- 下面是左边导航栏 -->
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="../ChooseNumber/index.html">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>选数策略</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <i class="nc-icon nc-diamond"></i>
+                            <p>相亲问题</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="nc-icon nc-spaceship"></i>
+                            <p>敬请期待</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
-        </nav>
-        <div class="container">
-            <br>
-            <div class="row">
-                <div class="col-md-2">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="../MontyHallProblem/Monty.html">三门问题</a></li>
-                        <li><a href="../ChooseNumber/ChooseNumber.html">选数策略</a></li>
-                        <li class="active"><a href="#">相亲问题</a></li>
-                        <li><a href="#">猜中的数字</a></li>
-                        <li><a href="#">七门问题</a></li>
-                        <li><a href="#">八门问题</a></li>
-                    </ul>
+        </div>
+        <div class="main-panel">
+
+            <!-- 下面是上侧导航栏 -->
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <!-- 这个是缩小界面后会出现的按钮 -->
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#">啊啊啊啊啊啊啊</a>
+                    </div>
+                    <div class="navTabs">
+                        <ul class="navbar-nav" id="navTabs" style="flex-direction:row; font-size:x-large">
+                            <li class="nav-item active" id="interactionTab" style="margin:0px">
+                                <a class="nav-link" href="#">互动 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item" id="explanationTab">
+                                <a class="nav-link" href="#">讲解</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
                 </div>
-                <div class="col-md-10">
-                    <ul class="nav nav-tabs" id="navTabs">
-                        <li class="active"><a data-toggle="tab" href="#interactionPage">互动</a></li>
-                        <li><a data-toggle="tab" href="#explanationPage">讲解</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="interactionPage" class="tab-pane fade in active">
-                            <div class="interaction">
-                                <h1>怎么找到最好的他</h1>
-                                <h3>你是一个非常优秀的姑娘，追求你的男生有很多很多，今天就有10位想要和你交往。</h3>
-                                <h3>这10个人是可以比较出排名的，你在交往过程中能够比较出他们的好坏。当然，只有正在交往的和已经交往过的人可以相互比较，也就是说你不知道某一个人在十个人中的绝对排名。</h3>
-                                <h3>现在规定，你在交往过程中不能脚踏两条船，并且如果你已经拒绝了一个人，你以后再也没有机会选择这个人做对象了。</h3>
-                                <h3>那么，你究竟应该怎样尽可能的找到最好的那个人呢？</h3>
-                                <div class="play">
-                                    <img src="img/girl.png">
-                                    <img src="img/boy.png">
-                                    假装这里有图
+            </nav>
+
+            <!-- 中间内容 -->
+            <div class="content">
+
+                <!-- 互动页 -->
+                <div id="interactionPage">
+
+                    <!-- 每一行都是一个row -->
+                    <div class="row">
+                        <!-- 每个row的宽度为12 此卡片宽度为12 即占满整个宽度 -->
+                        <div class="col-md-12" id="findHim">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">怎么找到最好的他</h5>
                                 </div>
-                                <div class="row">
-                                    <button type="button" class="btn btn-success col-xs-offset-1" id="startPlay">开始相亲</button>
+                                <div class="card-body">
+                                    <a href="#" id="seeIntro" style="display:none">查看/隐藏介绍</a>
+                                    <div id="introduction">
+                                        <p>你是一个非常优秀的姑娘，追求你的男生有很多很多，今天就有10位想要和你交往。</p>
+                                        <p>这10个人是可以比较出排名的，你在交往过程中能够比较出他们的好坏。当然，只有正在交往的和已经交往过的人可以相互比较，也就是说你不知道某一个人在十个人中的绝对排名。
+                                        </p>
+                                        <p>现在规定，你在交往过程中不能脚踏两条船，并且如果你已经拒绝了一个人，你以后再也没有机会选择这个人做对象了。</p>
+                                        <p>那么，你究竟应该怎样尽可能的找到最好的那个人呢？</p>
+                                    </div>
+                                    <div id="play" style="display:none">
+                                        <img src="img/girl.png">
+                                        <img src="img/boy.png">
+                                        假装这里有图
+                                    </div>
+                                    <button type="button" class="btn btn-success" id="startPlay">开始相亲</button>
                                     <div id="playing" style="display:none">
                                         <div class="col-xs-offset-1 ">
                                             <button type="button" class="btn btn-primary" id="nextPlayer">换下一人</button>
-                                            <button type="button" class="btn btn-success" id="finish" data-toggle="modal" data-target="#confirmModal">就他了！</button>
-                                            <button type="button" class="btn btn-primary" id="playAgain" style="display:none">重来一次</button>
-                                        </div>
-
-                                        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                            &times;
-                                                        </button>
-                                                        <h4 class="modal-title">提示</h4>
-                                                    </div>
-                                                    <div class="modal-body">确定要选这个人吗？</div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">再考虑考虑
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirm" data-toggle="modal" data-target="#infoModal">
-                                                            就是他了
-                                                        </button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal -->
-                                        </div>
-
-                                        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">提示</h4>
-                                                    </div>
-                                                    <div class="modal-body" id="boyDetail">这哥们排第几</div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal" id="exitModal">查看详细排名
-                                                        </button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal -->
-                                        </div>
-
-                                        <br><br>
-                                        <div class="col-xs-offset-1 col-xs-10">
-                                            <table class="table table-bordered" id="rankTable">
-                                                <tbody>
-                                                    <tr class="players">
-                                                        <td class="tableHead">人</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                                    </tr>
-                                                    <tr class="ranks">
-                                                        <td class="tableHead">当前相对排名</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                                    </tr>
-                                                    <tr class="realrank" style="display:none">
-                                                        <td class="tableHead">真实排名</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            <button type="button" class="btn btn-success" id="finish"
+                                                onclick="confirmAgain()">就他了！</button>
+                                            <button type="button" class="btn btn-primary" id="playAgain"
+                                                style="display:none">重来一次</button>
                                         </div>
                                     </div>
-                                    <br>
-
                                 </div>
                             </div>
-        
-                            <div class="detail">
-                                <h1>找到适可而止的那个点</h1>
-                                <p>
-                                    无论是男生找女朋友，还是女生找男朋友，都会遇到一个问题，尤其是优质的女生更面临这个问题，就是你越优质，机会就越多，获得的数据量就越大，就很容易产生一个冲动——“再看看吧，可能有更好的。”
-                                    但是，你收集数据的过程，也是丧失决策机会的过程——看到某某男生不错，但还有点儿问题，再看看吧，再比较一下……接下来，你找了5个男朋友之后突然觉得之前那个男生不错，回头再来找他，他给了你一张请柬。
-                                    “什么时候停止”是一个非常深刻的问题，中国哲学里的一个核心的概念叫“止”，停止。智慧的起点就是“止”，你不知道止，就不会有智慧；而智慧的重点也是止，你不但要“止”，而且知道什么时候、在多大程度上“止”——这就要考验你的智慧了。
-                                </p>
-                                <p>
-                                    找到这个停止点并非易事，不如我来告诉你一个停止策略——前3个人一律拒绝，后面的人只要出现比前3个人优秀的，那就选他！
-                                    这个停止策略虽不能保证一定会选到最好的，但我敢说这种选法能很大程度提高你选中好男人的概率！
-                                </p>
-                                <p>不信你试试？</p><a href="#">回到顶部</a>
-                                
+                        </div>
+                        <div class="col-md-4" id="resultTable" style="display:none">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="">
+                                        <table class="table">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <th> 人 </th>
+                                                    <th class="text-center"> 当前相对排名 </th>
+                                                    <th class="realRank text-center"> 真实排名 </th>
+                                                    <!-- <th class="text-right"> Salary </th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody id="rankBody">
+                                                <!-- <tr class="successgreen">
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th class="realRank"></th>
+                                                </tr> -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div id="explanationPage" class="tab-pane fade">
-                            <p>
-                                维基百科，自由的百科全书
-                                <br>
-                                在概率及博弈论上，秘书问题（Secretary problem），类似的名称有相亲问题 、止步问题、见好就收问题、苏丹的嫁妆问题、挑 剔的求婚者问题等，
-                                <br>
-                                内容是这样的：
-                                <br>
-                                要聘请一名秘书，有 n 个应聘者。每次面试一人，面试后就要及时决定是否聘他，如果当时 决定不聘他，他便不会回来。 面试后总能清楚了解应聘者的合适程度，并能和之前的每个人做比较。
-                                <br>
-                                问什么样的策略，才使最佳人选被选中的概率最大。
-                            </p>
-                            <p>
-                                这个问题的最优解是一个停止规则。在这个规则里，面试官会拒绝头 r - 1 个应聘者（令他们中的最佳人选为 应聘者 M），然后 选出第一个比 M 好的应聘者。
-                                <br>
-                                可见最优策略包含于这个系列的策略中。（如果M在所有n个应聘者中也是最好的一个，那么这个 策略将选不出任何人选）对于任意的截断值 r，最佳人选被选中的概率是：
-                            </p>
-                            <embed src="img/pic1.svg">
-                            <p>
-                                求和符号内概率的计算是基于：如果应聘者 i 是（所有应聘者中的）最佳人选，他被选中当且仅当头 i - 1 个应聘者中的最佳人选 处在头 r - 1 个被拒绝的应聘者中。令 n 趋近无穷大，把 x 表示为 r/n 的极限，令 t 为 i/n，dt 为 1/n，总和可以近似为如下积分：
-                            </p>
-                            <embed src="img/pic2.svg">
-                            <p>
-                                令 P(x) 对 x 的导数为 0，解出 x，我们得到最优的 x 等于 1/e。从而，当 n 增大时，最优截断值趋近于 n/e 最佳人选被选中的概率 为 1/e。
-                            </p>
-                            <p>
-                                对于较小的 n 值，下表给出了一些最优的 r 值：
-                            </p>
-                            <table class="table table-bordered">
-                                <tbody>
-                                    <tr>
-                                        <td>n</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
-                                    </tr>
-                                    <tr>
-                                        <td>r</td><td>1</td><td>1</td><td>2</td><td>2</td><td>3</td><td>3</td><td>3</td><td>4</td><td>4</td>
-                                    </tr>
-                                    <tr>
-                                        <td>P</td><td>1.000</td><td>0.500</td><td>0.500</td><td>0.458</td><td>0.433</td><td>0.428</td><td>0.414</td><td>0.410</td><td>0.406</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p>所以，经典秘书问题得出面试中应聘到最优面试者的概率是0.368，通俗说，100个人来面试，第36个人或者第37个人是最优应聘者的概率是最大的。</p>
-                            <p>
-                                生活中有很多类似于秘书问题的问题，比如说卖房，面对不同买房者提出来的报价，你只能选择接受或者拒绝，如何在买房中选择一个最优的报价是一个需要思考的问题，
-                                不同于单纯的秘书问题的是，每一次带买房者看房的过程，每一次获得报价的过程，也许你需要付出一定的代价，比如说时间，
-                                那如何在这个遴选获选报价所付出的代价和获得最优的报价之间达到达到一个平衡？
-                                很简单，我们可以设计一个阈值，这个阈值取决于我们遴选报价所付出的成本，毕竟下一轮报价令人更加心动的可能性不会发生任何变化，所以只要报价超过这个阈值，我们就可以接受这个报价。
-                            </p>
-                            <p>
-                                最优停止理论关注的是如何选择时间执行特定行动的问题，与秘书问题的连续性相同的是，生活中我们做出决定的时候，往往具有时间上的不可挽回性，你永远无法回到过去去重新做出选择，
-                                我们没有二次选择机会，如何在合适的时间停止观察做出选择，这是非常重要的问题
-                            </p>
-                            <p>要不要相关链接？https://www.jianshu.com/p/1e8bcb589723和https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C</p>
-                        </div>
-
                     </div>
                 </div>
+
+                <!-- 解释页 -->
+                <div id="explanationPage" style="display:none">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">解释页</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>这个问题来源于概率及博弈论上的秘书问题（Secretary problem），类似的名称有相亲问题 、止步问题、见好就收问题、苏丹的嫁妆问题、挑
+                                        剔的求婚者问题等。</p>
+                                    <p>内容是这样的：</p>
+                                    <p>要聘请一名秘书，有 n 个应聘者。每次面试一人，面试后就要及时决定是否聘他，如果当时 决定不聘他，他便不会回来。
+                                        面试后总能清楚了解应聘者的合适程度，并能和之前的每个人做比较。</p>
+                                    <p>问什么样的策略，才使最佳人选被选中的概率最大。</p>
+                                    <p>这个问题的最优解是一个停止规则。在这个规则里，面试官会拒绝头 r - 1 个应聘者（令他们中的最佳人选为 应聘者 M），然后 选出第一个比 M 好的应聘者。
+                                    </p>
+                                    <p>（如果M在所有n个应聘者中也是最好的一个，那么这个 策略将选不出任何人选）</p>
+                                    <p>对于任意的截断值 r，最佳人选被选中的概率是：</p>
+                                    <embed src="img/pic1.svg">
+                                    <p>
+                                        求和符号内概率的计算是基于：如果应聘者 i 是（所有应聘者中的）最佳人选，他被选中当且仅当头 i - 1 个应聘者中的最佳人选 处在头 r - 1
+                                        个被拒绝的应聘者中。令 n 趋近无穷大，把 x 表示为 r/n 的极限，令 t 为 i/n，dt 为 1/n，总和可以近似为如下积分：
+                                    </p>
+                                    <embed src="img/pic2.svg">
+                                    <p>
+                                        令 P(x) 对 x 的导数为 0，解出 x，我们得到最优的 x 等于 1/e。从而，当 n 增大时，最优截断值趋近于 n/e 最佳人选被选中的概率 为
+                                        1/e。
+                                    </p>
+                                    <p>
+                                        对于较小的 n 值，下表给出了一些最优的 r 值：
+                                    </p>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>n</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <td>7</td>
+                                                <td>8</td>
+                                                <td>9</td>
+                                            </tr>
+                                            <tr>
+                                                <td>r</td>
+                                                <td>1</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>P</td>
+                                                <td>1.000</td>
+                                                <td>0.500</td>
+                                                <td>0.500</td>
+                                                <td>0.458</td>
+                                                <td>0.433</td>
+                                                <td>0.428</td>
+                                                <td>0.414</td>
+                                                <td>0.410</td>
+                                                <td>0.406</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>所以，经典秘书问题得出面试中应聘到最优面试者的概率是0.368，通俗说，100个人来面试，第36个人或者第37个人是最优应聘者的概率是最大的。</p>
+                                </div>
+                                <div class="card-footer">
+                                    <hr>
+                                    <p>应该不会用到页脚</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">在生活中的应用</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>所以，经典秘书问题得出面试中应聘到最优面试者的概率是0.368，通俗说，100个人来面试，第36个人或者第37个人是最优应聘者的概率是最大的。</p>
+                                    <p>生活中有很多类似于秘书问题的问题，比如说卖房，面对不同买房者提出来的报价，你只能选择接受或者拒绝，如何在买房中选择一个最优的报价是一个需要思考的问题，</p>
+                                    <p>不同于单纯的秘书问题的是，每一次带买房者看房的过程，每一次获得报价的过程，也许你需要付出一定的代价，比如说时间，</p>
+                                    <p>那如何在这个遴选获选报价所付出的代价和获得最优的报价之间达到达到一个平衡？</p>
+                                    <p>很简单，我们可以设计一个阈值，这个阈值取决于我们遴选报价所付出的成本，毕竟下一轮报价令人更加心动的可能性不会发生任何变化，所以只要报价超过这个阈值，我们就可以接受这个报价。</p>
+                                    <p>
+                                        最优停止理论关注的是如何选择时间执行特定行动的问题，与秘书问题的连续性相同的是，生活中我们做出决定的时候，往往具有时间上的不可挽回性，你永远无法回到过去去重新做出选择，
+                                        我们没有二次选择机会，如何在合适的时间停止观察做出选择，这是非常重要的问题
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">相关链接</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="https://www.jianshu.com/p/1e8bcb589723">https://www.jianshu.com/p/1e8bcb589723</a>
+                                        <br>
+                                        <a href="https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C">https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </div>
+
+
+
+            <!-- 整个页面的页脚 -->
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li>
+                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                                </li>
+                                <li>
+                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="credits ml-auto">
+                            <span class="copyright">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

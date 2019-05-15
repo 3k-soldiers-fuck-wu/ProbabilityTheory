@@ -1,0 +1,11 @@
+#play img{
+    width: 20%;
+    height: auto;
+}
+.realRank{
+    display: none;
+}
+.successgreen{
+    /* 233,240,216 */
+    background-color: rgb(233, 240, 216);
+}
