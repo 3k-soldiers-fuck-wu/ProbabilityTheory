@@ -40,14 +40,14 @@ $(document).ready(function(){
             numTwo=randomNum(-200,200);
             x=1;
             console.log($panelBody.children("h1"));
-            $("#num1").remove();
-            $("#num2").remove();
+            $("#num1").html("");
+            $("#num2").html("");
         }
     })
     //生成数字和判断对错
     $("#save").click(function(){
         x=x+1;
-        $("#num2").append("<h1>第二个数字是"+numTwo+"</h1>");
+        $("#num2").append("第二个数字是"+numTwo);
         $p2.hide("slow");
         var isBig=document.getElementById("big");
         var isSmall=document.getElementById("small");

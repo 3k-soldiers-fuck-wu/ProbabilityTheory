@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+    <!-- 这个是本页面用到的css,js -->
+    <script src="Gun.js"></script>
+    <title>选数策略</title>
+
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            <!--
+                          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                      -->
+            <div class="logo">
+                <a href="http://study.maplefzh.cn" class="simple-text logo-mini">
+                    <div class="logo-image-small">
+                        <img src="../assets/img/logo-small.png">
+                    </div>
+                </a>
+                <a href="http://study.maplefzh.cn" class="simple-text logo-normal">
+                    概率论啊啊
+                </a>
+            </div>
+            <!-- 下面是左边导航栏 -->
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="../ChooseNumber/index.html">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>选数策略</p>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../OptimalStoppingTheory/index.html">
+                            <i class="nc-icon nc-diamond"></i>
+                            <p>相亲问题</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <i class="nc-icon nc-spaceship"></i>
+                            <p>最后生还者</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+
+            <!-- 下面是上侧导航栏 -->
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <!-- 这个是缩小界面后会出现的按钮 -->
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#">谁能活到最后</a>
+                    </div>
+                            <div class="navTabs">
+                                <ul class="navbar-nav" id="navTabs" style="flex-direction:row; font-size:x-large">
+                                    <li class="nav-item active" id="interactionTab" style="margin:0px">
+                                        <a class="nav-link" href="#">互动 <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item" id="explanationTab">
+                                        <a class="nav-link" href="#">讲解</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                </div>
+            </nav>
+
+            <!-- 中间内容 -->
+            <div class="content">
+
+                <!-- 互动页 -->
+                <div id="interactionPage">
+
+                    <!-- 每一行都是一个row -->
+                    <!-- <div class="row">
+                        <div class="col-md-4" id="One">
+                            <div class="card text-center">
+                                <div class="card-header ">
+                                    <h5 class="card-title">射手一</h5>
+                                    <p class="card-category">命中率50%</p>
+                                </div>
+                                <div class="card-body">
+                                    <img class="img-circle" src="../images/banner01.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4" id="Two">
+                            <div class="card text-center">
+                                <div class="card-header ">
+                                    <h5 class="card-title">射手二</h5>
+                                    <p class="card-category">命中率90%</p>
+                                </div>
+                                <div class="card-body">
+                                    <img class="img-circle" src="../images/banner02.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-md-4" id="Three">
+                            <div class="card text-center">
+                                <div class="card-header ">
+                                    <h5 class="card-title">射手三</h5>
+                                    <p class="card-category">命中率100%</p>
+                                </div>
+                                <div class="card-body">
+                                    <img class="img-circle" src="../images/banner02.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="row">
+                        <!-- 每个row的宽度为12 此卡片宽度为4 -->
+                        <div class="col-md-12" id="panel">
+                            <div class="card ">
+                                <div class="card-header ">
+                                    <h5 class="card-title">最后生还者</h5>
+                                    <p class="card-category">剧情</p>
+                                </div>
+                                <div class="card-body " id="controller">
+                                    <p id="plot">你和另外两名枪手参加生死游戏，游戏从你开始，依次朝任意目标射击，
+                                        每个人的命中率不同，你为50%，枪手二为90%，枪手三为100%。如何才能从游戏中活下来，
+                                        赢得百万奖金呢？
+                                    </p>
+                                    <button type="button" class="btn btn-success" id="start">开始游戏</button>
+                                </div>
+                                <div class="card-footer ">
+                                    <div class="legend">
+                                        <i class="fa fa-circle text-primary"></i> Opened
+                                        <i class="fa fa-circle text-warning"></i> Read
+                                        <i class="fa fa-circle text-danger"></i> Deleted
+                                        <i class="fa fa-circle text-gray"></i> Unopened
+                                    </div>
+                                    <hr>
+                                    <div class="stats">
+                                        <i class="fa fa-calendar"></i> Number of emails sent
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 记录比赛详情 -->
+                        <div class="col-md-4" style="display:none" id="record">
+                            <div class="card card-chart">
+                                <div class="card-header">
+                                    <h5 class="card-title text-center">比赛记录</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ol id="recordDetail"></ol>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="chart-legend">
+                                        <i class="fa fa-circle text-info"></i> Tesla Model S
+                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
+                                    </div>
+                                    <hr />
+                                    <div class="card-stats">
+                                        <i class="fa fa-check"></i> Data information certified
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 解释页 -->
+                <div id="explanationPage" style="display:none">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">解释页</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>等会再填</p>
+                                </div>
+                                <div class="card-footer">
+                                    <hr>
+                                    <p>应该不会用到页脚</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 整个页面的页脚 -->
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li>
+                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                                </li>
+                                <li>
+                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="credits ml-auto">
+                            <span class="copyright">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
