@@ -1,3 +1,26 @@
+
+$(document).ready(function () {
+    // 这个是更好看的滚动条，但是有时候不好使不知道为什么
+    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+    // 以下是上方切换互动页和讲解页的标签功能
+    $("#interactionTab").click(function () {
+        $("#navTabs").find("li").removeClass("active");
+        $("#navTabs").find("span").remove();
+        $("#interactionTab").addClass("active");
+        $("#interactionTab").find("a").append("<span class=\"sr-only\">(current)</span>")
+        $("#explanationPage").hide("fast");
+        $("#interactionPage").show("slow");
+    });
+    $("#explanationTab").click(function () {
+        $("#navTabs").find("li").removeClass("active");
+        $("#navTabs").find("span").remove();
+        $("#explanationTab").addClass("active");
+        $("#explanationTab").find("a").append("<span class=\"sr-only\">(current)</span>")
+        $("#interactionPage").hide("fast");
+        $("#explanationPage").show("slow");
+    });
+});
 var x=1;
 var temp=1;
 var bonusDoor;
@@ -77,7 +100,7 @@ $(document).ready(function(){
         if (x==3){
             bonusDoor=randomNum(1,3);
             // console.log(bonusDoor);
-            var door=$(this).id;
+            var door=$(this).attr("id");
             if (door=="第一扇门") clickDoor=1;
             if (door=="第二扇门") clickDoor=2;
             if (door=="第三扇门") clickDoor=3;
@@ -97,37 +120,43 @@ $(document).ready(function(){
         temp=0;
     })
 });
-
 $(function(){
     $(".startSimulate .btn").click(function(){
         var times=getTimes();
         var choice=getChoice();
         if (times==false||choice==false) alert("fuck you");
         else{
-            $(this).button('loading').delay(1500).queue(function(){
-                $(this).button('reset');
-                $(this).dequeue();
-                var result=simulator(times);
-                var bob=result[0];
-                var alice=result[1];
-                var winner="Bob";
-                var message="恭喜你，你猜对了！"
-                if(bob<alice){
-                    winner="Alice";
-                }
-                if(winner!==choice){
-                    message="很遗憾，你猜错了。";
-                }
-                $("#result").prepend("<div class=\"alert alert-success alert-dismissable\">"+
-                    "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">"+
-                        "&times;"+
-                       "</button>"+
-                        "<strong>"+message+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
-                "</div>")
-            });
+            $("#sis").removeClass("col-md-12");
+            $("#sis").addClass("col-md-7");
+            var result=simulator(times);
+            var bob=result[0];
+            var alice=result[1];
+            var winner="Bob";
+            var message="恭喜你，你猜对了！"
+            if(bob<alice){
+                winner="Alice";
+            }
+            if(winner!==choice){
+                message="很遗憾，你猜错了。";
+            }
+            $("#result").prepend("<div class=\"alert alert-success\">"+
+                "<button type=\"button\" class=\"close\" aria-hidden=\"true\">"+
+                    "<i class=\"nc-icon nc-simple-remove\"></i>"+
+                   "</button>"+
+                    "<strong>"+message+winner+"胜！</strong>Bob胜利了"+bob+"次，Alice胜利了"+alice+"次。"+
+            "</div>")
+            // $(this).button('loading').delay(1500).queue(function(){
+            //     $(this).button('reset');
+            //     $(this).dequeue();
+            // });
+            $("#res").show("fast");
 
         }
 
+    });
+    $(".nc-simple-remove").click(function(){
+        console.log($(this).parents(".alert"));
+        $(this).parents(".alert").remove();
     });
     // $("#chooseYes").click(function(){
     //     for (var i=1;i<3;i++){
@@ -138,7 +167,7 @@ $(function(){
     //     }
     // })
 });
-// });
+
 function simulator(times){
     let BobGetCar = 0;
     let AliceGetCar=0;

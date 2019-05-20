@@ -6,7 +6,6 @@ body{
     height: 60px;
     border-width: 0px;
     background-color: lightgray;
-    
 }
 .logo img{
     display: inline-block;
@@ -49,32 +48,4 @@ body{
 }
 .detail .simulate{
     width: 100%;
-}
-.animation{
-    position: relative;
-}
-.animation #boy{
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 20%;
-    height: auto;
-}
-.animation #girl{
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10;
-    width: 20%;
-    height: auto;
-}
-.animation #back{
-    display: block;
-    /* position: absolute; */
-    /* z-index: 1; */
-    width: 100%;
-    height: auto;
 }
