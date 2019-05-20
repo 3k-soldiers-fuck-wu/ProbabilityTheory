@@ -145,14 +145,18 @@ h1, h2, h3, h4, h5, h6 {
   height: auto;
 }
 #portfolio .portfolio-thumb .overlay {
-  opacity: 0;
+  /* opacity: 0; */
   visibility: visible;
-  background: rgba(227, 114, 46, 0.9);
+  background: rgba(140, 140, 140, 0.5);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* transition: all 0.2s ease-in-out; */
+}
+#portfolio .portfolio-thumb .overlay:hover{
+  background: rgba(140, 140, 140, 0.8);
   transition: all 0.2s ease-in-out;
 }
 #portfolio .portfolio-thumb .overlay .inner {
