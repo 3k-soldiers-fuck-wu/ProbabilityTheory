@@ -18,7 +18,7 @@
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- 这个是本页面用到的css,js -->
-    <script src="index.js"></script>
+    <script src="newIndex.js"></script>
     <title>选数策略</title>
 
 </head>
@@ -36,7 +36,7 @@
                     </div>
                 </a>
                 <a href="http://study.maplefzh.cn" class="simple-text logo-normal">
-                    概率论啊啊
+                    概率论
                 </a>
             </div>
             <!-- 下面是左边导航栏 -->
@@ -77,12 +77,12 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="#">啊啊啊啊啊啊啊</a>
+                        <a class="navbar-brand text-center">选数策略</a>
                     </div>
                     <div class="navTabs">
                         <ul class="navbar-nav" id="navTabs" style="flex-direction:row; font-size:x-large">
                             <li class="nav-item active" id="interactionTab" style="margin:0px">
-                                <a class="nav-link" href="#">互动 <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="#">游戏 <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item" id="explanationTab">
                                 <a class="nav-link" href="#">讲解</a>
@@ -103,23 +103,44 @@
                     <!-- 每一行都是一个row -->
                     <div class="row">
                         <!-- 每个row的宽度为12 此卡片宽度为12 即占满整个宽度 -->
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">猜大小游戏</h5>
+                                    <h6 class="card-title text-center">猜大小游戏</h6>
                                     <hr>
                                 </div>
                                 <div class="card-body" id="userCardBody">
-                                    <div id="num1"></div>
-                                    <div id="num2"></div>
+                                    <h6 id="num1"></h6>
+                                    <h6 id="num2"></h6>
                                     <div id="w1">
-                                        <p>电脑将会随机生成两个整数（包含负数）,并会展示给你其中一个整数，请猜测另一个整数比该数大还是小。（单击此处生成数字）</p>
+                                        <p>欢迎来到人机对抗！！！
+                                        <br>本次游戏采取五局三胜制。
+                                        <br>游戏规则如下：<br>电脑随机生成两个数字，你将知道其中一个数字，请猜测另一个数字比已知数字大还是小</p>
+                                        <button type="button" class="btn btn-success" id="createNum" onclick="change()">生成数字</button>
                                     </div>
-                                    <div id="w2" style="display:none">
-                                        <p>生成的数字如上图所示，请猜测另一个数字比它大还是小。</p>
-                                        <button type="button" class="btn btn-primary submitChoice" id="big">大</button>
-                                        <button type="button" class="btn btn-primary submitChoice" id="small">小</button>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h6 class="card-title text-center">游戏记录</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                            <th>场次</th>
+                                            <th>游戏结果</th>
+                                            <th>得分</th>
+                                        </thead>
+                                        <tbody id="record"></tbody>
+                                    </table>
+                                </div>
+                                <div class="card-footer">
+                                    <span id="round">尚未开始游戏</span>
+                                    <br>
+                                    <span class="text-right">你的得分是：</span>
+                                    <span class="text-left" id="score">0</span>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +150,7 @@
                         <div class="col-md-12" id="computerCard">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">电脑猜我</h5>
+                                    <h5 class="card-title text-center">人机对抗</h5>
                                     <hr>
                                 </div>
                                 <div class="card-body">
@@ -139,7 +160,7 @@
                                     <p>但是，如果说有一种策略，能使得你的胜率在一半以上，你是否相信呢？</p>
                                     <p>接下来，请允许我用电脑模拟这种策略，向您展现选数游戏的获胜策略！</p>
                                     <div class="ww well well-lg" style="width:100%;" id="computer">
-                                        <p>请您在一下两个方框中填入两个整数(电脑将只知道第一个数字)</p>
+                                        <p>请您在一下两个方框中填入两个整数(电脑只知道第一个数字,不填默认为0)</p>
                                         <form role="form">
                                             <div class="form-group">
                                                 <label for="UserNumOne">第一个数字</label>
@@ -154,9 +175,10 @@
                                             <div>
                                                 <button type="button" class="btn btn-primary" id="saveUser">确定</button>
                                             </div>
+                                            <p id="answer"></p>
                                         </form>
                                     </div>
-                                    <a href="#" id="seeStrategy" style="display:none">点我查看策略</a>
+                                    <a href="#" id="seeStrategy" style="display:none">点我查看电脑的策略</a>
                                 </div>
                                 <div class="card-footer" id="see" style="display:none">
                                     <hr>
@@ -166,14 +188,14 @@
                         <div class="col-md-5" id="strategyCard" style="display:none">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">策略</h5>
+                                    <h5 class="card-title">电脑策略</h5>
                                     <hr>
                                 </div>
                                 <div class="card-body" id="computerCard">
-                                    <h2>现在，我将告诉你，最优秀的策略：心中想好一个整数，然后这个整数加0.5，形成一个基准数
+                                    <p>电脑会生成一个整数，然后这个整数加0.5，形成一个基准数。基准数不是整数，所以不会和任何一个数字相同
                                         并假设基准数位于两个数中间。将已知的数和基准数进行比较，如果已知的数比基准数大，则
                                         猜测小，如果已知的数比基准数小，则猜测大。
-                                    </h2>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -186,26 +208,31 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">为什么我可以让概率超过50%</h5>
+                                    <h5 class="card-title text-center">优秀的策略</h5>
                                 </div>
                                 <div class="card-body">
-                                    <h1 id="baseNum">以0.5为基准数吧</h1>
-                                    <h2>一共有三种情况</h2>
-                                    <h3>情况一：两个数都小于基准数</h3>
-                                    <p>在这种情况下，不管已知什么数都会说“大”，如果已知的数是两数中较小的数，则答案正确，如果是较小的数
+                                    <h6>策略内容</h6>
+                                    <p>电脑会生成一个整数，然后这个整数加0.5，形成一个基准数。基准数不是整数，所以不会和任何一个数字相同
+                                        并假设基准数位于两个数中间。将已知的数和基准数进行比较，如果已知的数比基准数大，则
+                                        猜测小，如果已知的数比基准数小，则猜测大。
+                                    </p>
+                                    <h6>原因分析</h6>
+                                    <p>一共有三种情况</p>
+                                    <p>情况一：两个数都小于基准数</p>
+                                    <p>在这种情况下，不管已知什么数答案都是“大”，如果已知的数是两数中较小的数，则答案正确，如果是较小的数
                                         则答案错误。
                                     </p>
-                                    <h3>情况二：两个数都大于基准数</h3>
-                                    <p>在这种情况下，不管已知什么数都会说“小”，如果已知的数是两个数中较大的数，则答案正确
+                                    <p>情况二：两个数都大于基准数</p>
+                                    <p>在这种情况下，不管已知什么数答案都是“小”，如果已知的数是两个数中较大的数，则答案正确
                                         如果是较小的数，则答案错误
                                     </p>
-                                    <h3>情况三：基准数在两者之间</h3>
+                                    <p>情况三：基准数在两者之间</p>
                                     <p>在这种情况下，答案一定正确，因为答案是在这种情况的假设下进行的</p>
                                 </div>
-                                <!-- <div class="card-footer">
+                                <div class="card-footer">
                                     <hr>
-                                    <p>应该不会用到页脚</p>
-                                </div> -->
+                                    <p><strong>综上：</strong>答对的可能性高于50%。</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -224,10 +251,7 @@
                                     <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
                                 </li>
                                 <li>
-                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                                    <a href="../index.html">返回首页</a>
                                 </li>
                             </ul>
                         </nav>
