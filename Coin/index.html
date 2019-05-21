@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Chart.js -->
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+    <!-- 这个是本页面用到的css,js -->
+    <script src="index.js"></script>
+    <title>扔硬币问题</title>
+
+</head>
+
+<body class="">
+    <div class="wrapper">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            <!--
+                          Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+                      -->
+            <div class="logo">
+                <a href="http://study.maplefzh.cn" class="simple-text logo-mini">
+                    <div class="logo-image-small">
+                        <img src="../assets/img/logo-small.png">
+                    </div>
+                </a>
+                <a href="http://study.maplefzh.cn" class="simple-text logo-normal">
+                    概率论啊啊
+                </a>
+            </div>
+            <!-- 下面是左边导航栏 -->
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li>
+                        <a href="#">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>选数策略</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../OptimalStoppingTheory/index.html">
+                            <i class="nc-icon nc-diamond"></i>
+                            <p>相亲问题</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../new/index.html">
+                            <i class="nc-icon nc-diamond"></i>
+                            <p>抛硬币问题</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="nc-icon nc-spaceship"></i>
+                            <p>敬请期待</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+
+            <!-- 下面是上侧导航栏 -->
+            <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <!-- 这个是缩小界面后会出现的按钮 -->
+                        <div class="navbar-toggle">
+                            <button type="button" class="navbar-toggler">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </button>
+                        </div>
+                        <a class="navbar-brand" href="#">啊啊啊啊啊啊啊</a>
+                    </div>
+                    <div class="navTabs">
+                        <ul class="navbar-nav" id="navTabs" style="flex-direction:row; font-size:x-large">
+                            <li class="nav-item active" id="interactionTab" style="margin:0px">
+                                <a class="nav-link" href="#">互动 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item" id="explanationTab">
+                                <a class="nav-link" href="#">讲解</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- 中间内容 -->
+            <div class="content">
+
+                <!-- 互动页 -->
+                <div id="interactionPage">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">扔硬币问题</h5>
+                                    <hr>
+                                </div>
+                                <div class="card-body">
+                                    <p>连续扔硬币非常简单，但是在他背后却隐藏着许多惊喜和意外。</p>
+                                    <p>假设汤姆和哈利正在扔硬币，如果正面朝上的话，哈利得一分，反面朝上则汤姆得一分。</p>
+                                    <p>随着游戏的继续，他们各自的分数不断增加，这看起来是个相当公平完美的游戏。</p>
+                                    <p>比如进行了十次游戏，有时哈利领先，有时汤姆会反超。</p>
+                                    <p>右表是某十次游戏的整个过程，y轴上正数代表汤姆领先，负数则哈利领先，恰好是0时则为平局。</p>
+                                    <!-- <canvas id="example" width="400" height="100"></canvas> -->
+                                    <p>现在汤姆和哈利要扔100轮硬币，在记录的过程中我们发现领先者一直在来回改变。</p>
+                                    <b>因为这是一个公平的游戏，所以虽然领先者一直在变化，但似乎每个人都可以在一半的时间内占据领先地位。</b>
+                                    <p id="qwerty">结果真的如我所说吗？请你自己思考思考。</p>
+                                    <button type="button" class="btn btn-primary" id="seeResult">查看结论</button>
+                                    <div id="result" style="display: none">
+                                        <br><br>
+                                        <p>我来戳破你们幻想的气泡了！最有可能发生的情况是</p>
+                                        <h5>某一个人一直领先！</h5>
+                                        <p>不知道你是否对这个结果感到惊讶：“这不是个公平的游戏吗？为什么会是某一个人一直领先？”</p>
+                                        <p>还是感到疑惑吗？那你就让计算机帮你操作，让他们两个人玩个成百上千次，看看结果究竟怎样。并思考：</p>
+                                        <h5>这个游戏的公平性到底体现在哪？</h5>
+                                        <button type="button" class="btn btn-primary" id="toPlay">去操作</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">汤姆和哈利扔硬币前十次结果</h5>
+                                    <hr>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="example"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="play" style="display: none">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">图表</h5>
+                                    <hr>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id=chart1 width="400" height="100"></canvas>
+                                    <button class="btn btn-primary" type="button" id="addOneData">加一个</button>
+                                    <button class="btn btn-primary" type="button" id="addTenData">加十个</button>
+                                    <button class="btn btn-primary" type="button" id="addHundredData">加一百个</button>
+                                    <button class="btn btn-danger" type="button" id="clearData">清空数据</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="explanationPage" style="display:none">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">游戏的公平到底体现在哪？</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>先来解释一下这个简单的问题。</p>
+                                    <p>首先，这个游戏真的是公平的。游戏的公平到底体现在哪？</p>
+                                    <p>实际上，汤姆和哈利两个人都有可能一直保持领先地位，所以他们领先是等可能的。</p>
+                                    <p>也就是说，给定一个确定的游戏次数，汤姆和哈利最终谁领先是等可能的。</p>
+                                    <b>但这不说明在游戏的过程中两个人等可能地交替领先！</b>
+                                    <p></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer footer-black  footer-white ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav class="footer-nav">
+                            <ul>
+                                <li>
+                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                                </li>
+                                <li>
+                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="credits ml-auto">
+                            <span class="copyright">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
