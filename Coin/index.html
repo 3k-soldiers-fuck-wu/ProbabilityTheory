@@ -2,7 +2,7 @@
 <html lang="zh">
 
 <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
     <!--     Fonts and icons     -->
@@ -21,7 +21,7 @@
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- 这个是本页面用到的css,js -->
     <script src="index.js"></script>
-    <title>扔硬币问题</title>
+    <title>抛硬币问题</title>
 
 </head>
 
@@ -180,6 +180,34 @@
                                     <b>但这不说明在游戏的过程中两个人等可能地交替领先！</b>
                                     <p></p>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">交替领先的期望</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>100轮游戏中，最有可能发生的情况是某一个人一直领先，大概有<b>15%</b>的机会。交替领先的期望值只有3.5。</p>
+                                    <p>如果真的交替领先，最可能交替的次数是1，然后次可能是2，接着是3……领先位置交替10次以上的概率仅有4%！</p>
+                                    <p>即使是只玩10次游戏你也可以发现这个事实，总共有2^10=1024种可能，随便挑几种就会发现，很多情况这条线完全在0的上方或下方，很少有与0线相交的。</p>
+                                    <p>那如果他们进行1000轮游戏，领先地位交替次数的期望会变成10倍吗？</p>
+                                    <p>不会。期望值是12。当进行10000轮游戏时，期望值变成了39。期望值的增加的比例与游戏比例并不同步。如果游戏次数变成了10倍，期望值大概只会变成3倍。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">参考资料</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>《生活中的概率趣事》机械工业出版社</p>
                                 </div>
                             </div>
                         </div>

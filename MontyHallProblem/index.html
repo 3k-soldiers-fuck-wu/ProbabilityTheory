@@ -2,7 +2,7 @@
 <html lang="zh">
 
 <head>
-	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
 	<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
 	<!--     Fonts and icons     -->
@@ -19,7 +19,7 @@
 	<script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
 	<!-- 这个是本页面用到的css,js -->
 	<title>三门问题</title>
-	<script src="newIndex.js"></script>
+	<script src="index.js"></script>
 	<link href="index.css" rel="stylesheet">
 </head>
 
@@ -45,7 +45,7 @@
 					<li>
 						<a href="../Coin/index.html">
 							<i class="nc-icon nc-diamond"></i>
-							<p>抛硬币</p>
+							<p>抛硬币问题</p>
 						</a>
 					</li>
 					<li class="active">
@@ -117,31 +117,39 @@
 							<div class="tab-content">
 								<div class="card interaction">
 									<div class="card-header">
-										<h5 class="card-title text-center">竞猜大赛</h5>
+										<h5 class="card-title">竞猜大赛</h5>
 										<hr>
 									</div>
 									<div class="card-body" id="userCardBody">
 										<div class="play">
+											<p id="p1">朋友你好，欢迎来到“让我们做笔交易”游戏秀！</p>
+											<p id="p2" style="display:none">
+												现在你的面前有三扇门，只有一扇门的后面有宝石，其他两扇门后面空空如也。请你猜猜，哪一扇门背后有宝石？</p>
+											<p id="p3" style="display:none">你选择的是第一扇门，但是我先不告诉你这扇门后面是什么...</p>
+											<p id="p4" style="display:none">
+												我却要告诉你，第三扇门后面是空的！<br>我现在给你一次改变选择的机会，请问你是坚持之前的选择，还是考虑换一扇门呢？</p>
+											<p id="p5" style="display:none">你选的门后面有/没有宝石！恭喜/遗憾！</p>
 											<img src="img/host.png" id="host">
 											<img src="img/door.png" class="doors" id="第一扇门">
 											<img src="img/door.png" class="doors" id="第二扇门">
 											<img src="img/door.png" class="doors" id="第三扇门">
-											<div class="ww" style="width:100%;">
-												<!-- <p id="w1">正宗好凉茶，正宗好游戏。欢迎来到《耍你没商量》大赛！我是主持人华少，我们一起来玩一个竞猜吧！（单击继续）</p>
-												<p id="w2" style="display:none">现在你的面前有三扇门，只有一扇门的后面有宝石，其他两扇门后面空空如也。（单击继续）
-												</p>
-												<p id="w3" style="display:none">下面请你猜测哪一扇门后面有宝藏呢？（请点击你选择的门）</p>
-												<p id="w4" style="display:none">你选择的是第一扇门，但是我先不告诉你这扇门后面是什么。（单击继续）</p>
-												<p id="w5" style="display:none">我却要告诉你，第三扇门后面是空的！（单击继续）</p>
-												<p id="w6" style="display:none">请问你是否要改变选择打开另一扇门？
-
-													<button type="button" class="btn btn-default wwbtn" id="chooseYes"
-														onclick="change()">是</button>
-													<button type="button" class="btn btn-default wwbtn"
-														id="chooseNo">否</button>
-
-												</p>
-												<p id="w7" style="display:none">你选的门后面有/没有宝石！恭喜/遗憾！（单击再来一次）</p> -->
+											<div>
+												<button type="button" class="btn btn-success"
+													id="startPlay">开始游戏</button>
+												<button type="button" class="btn btn-primary" id="Door1Btn"
+													style="display:none">第一扇门</button>
+												<button type="button" class="btn btn-primary" id="Door2Btn"
+													style="display:none">第二扇门</button>
+												<button type="button" class="btn btn-primary" id="Door3Btn"
+													style="display:none">第三扇门</button>
+												<button type="button" class="btn btn-primary" id="next"
+													style="display:none">继续</button>
+												<button type="button" class="btn btn-primary" id="change"
+													style="display:none">换</button>
+												<button type="button" class="btn btn-primary" id="notChange"
+													style="display:none">不换</button>
+												<button type="button" class="btn btn-primary" id="playAgain"
+													style="display:none">再来一次</button>
 											</div>
 										</div>
 									</div>
@@ -154,32 +162,30 @@
 						<div class="col-md-12" id="sis">
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title"></h5>
+									<h5 class="card-title">我该不该改变自己的选择？</h5>
 									<hr>
 								</div>
 								<div class="card-body" id="userCardBody">
-									<h6>
-										在主持人问你是否要改变自己的选择时，不知道你有没有思考过，改变自己的选择会不会影响你成功的概率？<br><br>
-										一种很直接的想法就是：主持人帮我排除掉了一个错误答案，那么剩下两扇门后面有宝石的概率都为1/2咯。<br>
-										这种想法非常的符合人们的直觉，那这么想究竟对不对呢？<br><br>
-										事实胜于雄辩，不如我们用计算机模拟来看看，结果究竟是怎样的。<br>
-
-									</h6>
+									<div>
+										<p>在主持人问你是否要改变自己的选择时，不知道你有没有思考过，改变自己的选择会不会影响你成功的概率？</p>
+										<p>一种很直接的想法就是：主持人帮我排除掉了一个错误答案，那么剩下两扇门后面有宝石的概率都为1/2咯。</p>
+										<p>这种想法非常的符合人们的直觉，那这么想究竟对不对呢？</p>
+										<p>事实胜于雄辩，不如我们用计算机模拟来看看，结果究竟是怎样的。</p>
+									</div>
 									<div class="animation">
 										<img src="img/back.png" id="back">
 										<img src="img/boy.png" id="boy">
 										<img src="img/girl.png" id="girl">
-
 									</div>
-									<h6>
-										现在有两位固执的参赛选手。铁柱会在主持人询问时一直改变选择，而翠花永远不改变自己的选择。还有一位佛系选手，他有一半的可能改变自己的选择。<br>
-										你认为他们获胜的次数有没有差别？谁获胜的次数最多呢？
-									</h6>
-									<!-- <h3>左面的Bob会在主持人询问“是否改变选择的时候”改变自己的选择，而右面的Alice则不会改变选择。你认为谁赢的概率更大些呢？</h3> -->
-									<br>
+									<div>
+										<b>现在有两位固执的参赛选手。铁柱会在主持人询问时一直改变选择，而翠花永远不改变自己的选择。</b><br>
+										<b>你认为他们获胜的次数有没有差别？谁获胜的次数最多呢？</b>
+									</div>
+									<br><br>
 									<div class="simulate">
 										<div class="row">
-											<div class="col-md-2" style="text-align: center;margin-top: auto;margin-bottom: auto">
+											<div class="col-md-2"
+												style="text-align: center;margin-top: auto;margin-bottom: auto">
 												<h6>我支持的角色</h6>
 											</div>
 											<div class="col-md-7">
@@ -192,22 +198,22 @@
 													</label>
 												</div>
 											</div>
-
 										</div>
 										<div class="row">
-											<div class="col-md-2" style="text-align: center;margin-top: auto;margin-bottom: auto">
+											<div class="col-md-2"
+												style="text-align: center;margin-top: auto;margin-bottom: auto">
 												<h6>比赛次数</h6>
 											</div>
 											<div class="col-md-7">
 												<div class="btn-group" data-toggle="buttons" id="times">
 													<label class="btn btn-primary">
+														<input type="radio" name="timeOpts" id="opt10"> 10
+													</label>
+													<label class="btn btn-primary">
 														<input type="radio" name="timeOpts" id="opt100"> 100
 													</label>
 													<label class="btn btn-primary">
 														<input type="radio" name="timeOpts" id="opt1k"> 1000
-													</label>
-													<label class="btn btn-primary">
-														<input type="radio" name="timeOpts" id="opt1w"> 10000
 													</label>
 												</div>
 											</div>
@@ -220,7 +226,7 @@
 											</div>
 										</div>
 										<br><br><br>
-										
+
 									</div>
 								</div>
 							</div>
@@ -228,15 +234,19 @@
 						<div class="col-md-5" id="res" style="display: none">
 							<div class="card">
 								<div class="card-body">
+									<div class="">
+										<table class="table">
+											<thead class="text-primary">
+												<tr>
+													<th>你的结果</th>
+													<th>Bob获胜次数</th>
+													<th>Alice获胜次数</th>
+												</tr>
+											</thead>
+											<tbody id="tBody">
 
-									<div id="result">
-										<!-- <div class="alert alert-success alert-dismissable"> -->
-											<!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-												&times;
-											</button>
-											<strong>Bob胜！</strong>Bob胜利了6780次，Alice胜利了3220次。
-										-->
-										<!-- </div> -->
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
@@ -253,13 +263,15 @@
 									<h5 class="card-title">背景介绍</h5>
 								</div>
 								<div class="card-body">
-									<h7>刚才你所玩的被称作三门问题——亦称为蒙提霍尔问题，出自美国的电视游戏节目Let's Make a Deal。问题的名字来自该节目的主持人蒙提·霍尔（Monty
-										Hall）。这个游戏的玩法是：<br><br>
-										参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车或者是奖品，选中后面有车的那扇门就可以赢得该汽车或奖品，而另外两扇门后面则各藏有一只山羊。当参赛者选定了一扇门，但未去开启它的时候，知道门后情形的节目主持人会开启剩下两扇门的其中一扇，露出其中一只山羊。主持人其后会问参赛者要不要换另一扇仍然关上的门。<br><br>
-										也许你认为：<br>
-										主持人排除掉了一个错误答案，于是剩下的两扇门必然是一扇是羊，一扇是跑车，那么此时无论选择哪一扇门，胜率都是1/2，合乎直觉。<br><br>
-										但是胜率真的是1/2吗？这个问题在历史上曾引起了十分热烈的争论。<br>
-									</h7>
+									<div>
+										<p>刚才你所玩的被称作三门问题——亦称为蒙提霍尔问题，出自美国的电视游戏节目Let's Make a
+											Deal。问题的名字来自该节目的主持人蒙提·霍尔（Monty Hall）。这个游戏的玩法是：</p>
+										<p>参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车或者是奖品，选中后面有车的那扇门就可以赢得该汽车或奖品，而另外两扇门后面则各藏有一只山羊。当参赛者选定了一扇门，但未去开启它的时候，知道门后情形的节目主持人会开启剩下两扇门的其中一扇，露出其中一只山羊。主持人其后会问参赛者要不要换另一扇仍然关上的门。
+										</p>
+										<p>也许你认为：</p>
+										<p>主持人排除掉了一个错误答案，于是剩下的两扇门必然是一扇是羊，一扇是跑车，那么此时无论选择哪一扇门，胜率都是1/2，合乎直觉。</p>
+										<p>但是胜率真的是1/2吗？这个问题在历史上曾引起了十分热烈的争论。</p>
+									</div>
 								</div>
 								<!-- <div class="card-footer">
                                     <hr>
@@ -275,24 +287,34 @@
 									<h5 class="card-title">数学解释</h5>
 								</div>
 								<div class="card-body">
-									<h7>
-										我们重温一下这个游戏的限制条件：<br>
-										1.参赛者只能在三扇门中挑选一扇，而且他并不知道内里有什么。<br>
-										2.主持人却是明确知道每扇门后面有什么。<br>
-										3.主持人必须开启剩下的其中一扇门，并且必须提供换门的机会。<br><br>
-										从这些限制条件中，能够得出一个非常重要的条件：<br>
-										知道答案的主持人，是不可能选择开启有车的门的！！！<br>
-										主持人一定会挑一扇有山羊的门，也就是说，主持人选择开启其中一扇门时，他的选择并不是一个随机事件！<br><br>
-
-										在这里可以给你介绍一个非常有用的数学工具——贝叶斯公式，可以很简单的解决这个问题。<br>
-										我们用事件A代表你第一次选择的门后是跑车，B代表主持人翻开的门后是山羊。那么已知B的情况下，A发生的条件概率 P{A|B} 用贝叶斯公式可得：<br>
-										P{A|B}=P{A}P{B|A}/P{B}<br>
-										显然，第一次选对的概率，即 P{A}=1/3<br>
-										因为主持人知道门后对应的东西，所以只选择开启有羊的门，于是<br>
-										主持人一定选择山羊，事件 B 一定发生：P{B|A} = 1<br>
-										主持人一定选择山羊，事件 B 一定发生：P{B} = 1<br>
-										那么 P{A|B} = 1/3，所以不换的胜率是1/3，因此一定要换。<br>
-									</h7>
+									<div>
+										<p>我们重温一下这个游戏的限制条件：</p>
+										<p>1.参赛者只能在三扇门中挑选一扇，而且他并不知道内里有什么。</p>
+										<p>2.主持人却是明确知道每扇门后面有什么。</p>
+										<p>3.主持人必须开启剩下的其中一扇门，并且必须提供换门的机会。</p>
+										<p>从这些限制条件中，能够得出一个非常重要的条件：</p>
+										<p>知道答案的主持人，是不可能选择开启有车的门的！！！</p>
+										<p>主持人一定会挑一扇有山羊的门，也就是说，主持人选择开启其中一扇门时，他的选择并不是一个随机事件！</p>
+										<p>在这里可以给你介绍一个非常有用的数学工具——<a href="#">贝叶斯公式</a>，可以很简单的解决这个问题。</p>
+										<blockquote class="blockquote">
+											<p>贝叶斯公式</p>
+											<img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=239894515,405307697&amp;fm=58"
+												alt="formula">
+											<p>公式描述：</p>
+											<p>
+												公式中，事件Bi的概率为P(Bi)，事件Bi已发生条件下事件A的概率为P(A│Bi)，事件A发生条件下事件Bi的概率为P(Bi│A)。
+											</p>
+										</blockquote>
+										<p>我们用事件A代表你第一次选择的门后是跑车，B代表主持人翻开的门后是山羊。那么已知B的情况下，A发生的条件概率 P{A|B} 用贝叶斯公式可得：</p>
+										<blockquote class="blockquote">
+											<p class="mb-0">P{A|B}=P{A}P{B|A}/P{B}</p>
+										</blockquote>
+										<p>显然，第一次选对的概率，即 P{A}=1/3</p>
+										<p>因为主持人知道门后对应的东西，所以只选择开启有羊的门，于是</p>
+										<p>主持人一定选择山羊，事件 B 一定发生：P{B|A} = 1</p>
+										<p>主持人一定选择山羊，事件 B 一定发生：P{B} = 1</p>
+										<p>那么 P{A|B} = 1/3，所以不换的胜率是1/3，因此一定要换。</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -304,8 +326,8 @@
 									<h5 class="card-title">举例说明</h5>
 								</div>
 								<div class="card-body">
-									<h7>
-										如果你还是有些没懂，那么我们可以再玩三个游戏。<br>
+									<div>
+										<p>如果你还是有些没懂，那么我们可以再玩三个游戏。</p>
 										<p>游戏1.有三个盒子，一个盒子里有钻石，其它两个什么都没有。你先选了一个盒子，放在你的书包里。主持人把另外两个放在他的书包里。这时候问你，要不要用你的书包换主持人的书包？
 										</p>
 										<p>分析：你的书包只有一个盒子，主持人的书包有两个，很显然，主持人的书包里有钻石的可能性更大。所以应该选择换！</p>
@@ -317,7 +339,21 @@
 										<p>分析：游戏2相对于游戏3，唯一的不同是增加了“书包”这个概念，但其实有没有把盒子装入书包，并不会对结论产生影响，本质上游戏3和游戏2是同一个游戏。所以游戏3同样要换。
 										</p>
 										<p>而游戏3就是题目中所描述的三门问题。因此结论只有一个字：换。</p>
-									</h7>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title">参考资料</h5>
+								</div>
+								<div class="card-body">
+									<p>《生活中的概率趣事》机械工业出版社</p>
+									<a
+										href="https://www.zhihu.com/question/26709273">https://www.zhihu.com/question/26709273</a>
 								</div>
 							</div>
 						</div>
