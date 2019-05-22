@@ -140,7 +140,10 @@ function checkAws(numOne,numTwo){
 }
 $(document).ready(function () {
     // 这个是更好看的滚动条，但是有时候不好使不知道为什么
-    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+    var is_mobile = ((/Mobile|iPhone|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera) ? true : false);
+    if (!is_mobile) {
+        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+    }
 
     // 以下是上方切换互动页和讲解页的标签功能
     $("#interactionTab").click(function () {
