@@ -61,6 +61,11 @@ $(document).ready(function () {
                 pointHoverRadius: 2,
                 pointBorderWidth: 4
             }]
+        },
+        options:{
+            legend: {
+                display: false,
+              }
         }
     });
 
@@ -81,6 +86,11 @@ $(document).ready(function () {
                 pointHoverRadius: 2,
                 pointBorderWidth: 4
             }]
+        },
+        options:{
+            legend: {
+                display: false,
+              }
         }
     });
     function addData(){
