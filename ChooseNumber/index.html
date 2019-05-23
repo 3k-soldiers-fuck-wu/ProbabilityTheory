@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <!-- 注意代码的引入顺序 -->
     <script src="../assets/js/core/jquery.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
@@ -44,8 +45,8 @@
                 <ul class="nav">
                     <li>
                         <a href="../Coin/index.html">
-                            <i class="nc-icon nc-bank"></i>
-                            <p>抛硬币</p>
+                            <i class="nc-icon nc-alert-circle-i"></i>
+                            <p>抛硬币问题</p>
                         </a>
                     </li>
                     <li>
@@ -56,19 +57,19 @@
                     </li>
                     <li class="active ">
                         <a href="#">
-                            <i class="nc-icon nc-bank"></i>
+                            <i class="nc-icon nc-bulb-63"></i>
                             <p>选数策略</p>
                         </a>
                     </li>
                     <li>
                         <a href="../OptimalStoppingTheory/index.html">
-                            <i class="nc-icon nc-diamond"></i>
+                            <i class="nc-icon nc-favourite-28"></i>
                             <p>相亲问题</p>
                         </a>
                     </li>
                     <li>
                         <a href="../Gun/Gun.html">
-                            <i class="nc-icon nc-spaceship"></i>
+                            <i class="nc-icon nc-controller-modern"></i>
                             <p>最后生还者</p>
                         </a>
                     </li>
@@ -149,6 +150,7 @@
                                     </table>
                                 </div>
                                 <div class="card-footer">
+                                    <hr>
                                     <span id="round">尚未开始游戏</span>
                                     <br>
                                     <span class="text-right">你的得分是：</span>
@@ -248,10 +250,59 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">参考资料</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>《生活中的概率趣事》机械工业出版社</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+      <!-- Modal -->
+      <div class="modal fade" id="wrongInput" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">网页提示</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>请输入两个不同的整数（包含负数），如<h6>-10</h6><h6>20</h6></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- Modal -->
+      <div class="modal fade" id="wol" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">网页提示</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
             <!-- 整个页面的页脚 -->
             <footer class="footer footer-black  footer-white ">
@@ -259,9 +310,6 @@
                     <div class="row">
                         <nav class="footer-nav">
                             <ul>
-                                <li>
-                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                                </li>
                                 <li>
                                     <a href="../index.html">返回首页</a>
                                 </li>

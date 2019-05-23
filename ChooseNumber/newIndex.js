@@ -30,6 +30,7 @@ function randomNum(minNum,maxNum){
 //初始化函数
 //初始化两个数字，同时生成按钮与文案
 function initGame(){
+    $("#wol .modal-body").find("p").remove();
     if(round>=3){
         check();
     }
@@ -64,6 +65,9 @@ function showAws(num){
     var isRight=((num==1&&secondNum>firstNum) || (num==0 && secondNum<firstNum));
     var message=isRight?"恭喜你，你答对了。":"很遗憾，你猜错了。";
     message+=secondNum<firstNum?"第二个数字小于第一个数字。":"第二个数字大于第一个数字。";
+    var record=isRight?"胜":"败";
+    var mark=isRight?1:0;
+    score+=mark;
     var button=(score>=3)||(round-score>=3)?`
     <button type="button" class="btn btn-success" onclick="initGame()">查看结果</button>
     `:`<button type="button" class="btn btn-success" onclick="initGame()">下一局</button>`;
@@ -71,8 +75,6 @@ function showAws(num){
         <p>${message}</p>
         ${button}
     `);
-    var record=isRight?"胜":"败";
-    var mark=isRight?1:0;
     $("#record").append(`
         <tr>
             <th>${round}</th>
@@ -83,7 +85,6 @@ function showAws(num){
     $("#round").html(`
         游戏次数：${round}
     `);
-    score+=mark;
     $("#score").html(`
         ${score}
     `);
@@ -91,9 +92,12 @@ function showAws(num){
 //检查结束游戏并还原比赛记录
 function check(){
         if(score>=3){
-            alert(`
-                游戏结束。恭喜你，赢得本局游戏。
+            $("#wol .modal-body").append(`
+                <p>恭喜你！你赢得了本场游戏。</p>
+                <p>游戏次数：${round}</p>
+                <p>你的得分：${score}</p>
             `);
+            $("#wol").modal('show');
             round=0;
             score=0;
             $("#record").find("tr").remove();
@@ -104,9 +108,12 @@ function check(){
             ${score}
             `);
         }else if(round-score>=3){
-            alert(`
-                游戏结束。很遗憾，你输了。
+            $("#wol .modal-body").append(`
+                <p>很遗憾，你输了，请再接再厉。</p>
+                <p>游戏次数：${round}</p>
+                <p>你的得分：${score}</p>
             `);
+            $('#wol').modal('show');
             round=0;
             score=0;
             $("#record").find("tr").remove();
@@ -172,7 +179,7 @@ $(document).ready(function () {
             $("#answer").show("fast");
             $("#seeStrategy").show("fast");
         }else{
-            alert("两个数需要不同，且必须为整数。请重新输入。");
+            $("#wrongInput").modal('show')
         }
     });
     $("#seeStrategy").click(function(){

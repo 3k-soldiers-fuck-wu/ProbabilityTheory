@@ -178,7 +178,7 @@ $(document).ready(function () {
     $("#submit").click(function () {
         var times = getTimes();
         var choice = getChoice();
-        if (times == false || choice == false) alert("fuck you");
+        if (times == false || choice == false) {$("#exampleModalCenter").modal('show')}
         else {
             $("#sis").removeClass("col-md-12");
             $("#sis").addClass("col-md-7");
