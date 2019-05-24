@@ -127,18 +127,6 @@
                                     </p>
                                     <button type="button" class="btn btn-success" id="start">开始游戏</button>
                                 </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-primary"></i> Opened
-                                        <i class="fa fa-circle text-warning"></i> Read
-                                        <i class="fa fa-circle text-danger"></i> Deleted
-                                        <i class="fa fa-circle text-gray"></i> Unopened
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-calendar"></i> Number of emails sent
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!-- 记录比赛详情 -->
@@ -149,16 +137,6 @@
                                 </div>
                                 <div class="card-body">
                                     <ol id="recordDetail"></ol>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="chart-legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                                    </div>
-                                    <hr />
-                                    <div class="card-stats">
-                                        <i class="fa fa-check"></i> Data information certified
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -171,17 +149,60 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">解释页</h5>
+                                    <h5 class="card-title">决斗技巧</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>等会再填</p>
+                                    <p>
+                                        首先，如果射手一（50%）选择杀死射手二（90%），射中即代表射手一下一回合一定会被射手三杀死。
+                                        如果，射手一（50%）成功杀死了射手三（100%），射手一还是有机会在射手二（90%）的枪下逃命。
+                                        如果，射手一（50%）没能射杀射手三（100%），射手三（100%）一定会选择射杀更有威胁的射手二，
+                                        此时，射手一还有最后一次机会射杀射手三。不管瞄准了谁，射手一的第一枪没有射中对自身更加有利。
+                                    </p>
                                 </div>
                                 <div class="card-footer">
                                     <hr>
-                                    <p>应该不会用到页脚</p>
+                                    <p><strong>综上：</strong>第一枪应该放空枪。</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">详细计算</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        为了让问题更加简单，我们假设子弹的供应是无限量地。假设射手一第一枪射偏，
+                                        并且射手二成功的击杀了射手三。
+                                        此时有两种情况需要考虑：
+                                        <blockquote class="blockquote">
+                                            <p>1：射手一第一枪射中了。</p>
+                                            <p>2: 射手一和射手二第一枪都打偏了。</p>
+                                            <p class="mb-0">
+                                                概率是：p（射手一赢）=p（射手一第一种情况赢）*p（发生第一种情况）+p（射手一第二种情况赢）*p（发生第二种情况）
+                                            </p>
+                                        </blockquote>
+                                            <p>
+                                                p（射手一第一种情况赢）=1，p（发生第一种情况）=0.5，p（发生第二种情况）=0.1*0.5=0.05.
+                                                第二种情况下，第一轮射击完成后，两个未知数p（射手一赢）等于p（射手一第二种情况赢）。用p来表示这个未知数
+                                                可以得出公式：<strong>p=0.5+0.05*p</strong>
+                                                <br><strong>解得p大约为0.53</strong>。
+                                            </p>
+                                            <P>但是，这个概率是在射手二成功击杀射手三的前提下进行计算的，这个前提发生的概率是0.9
+                                               考虑到射手一有可能没能击杀射手三，使用加法法则计算：
+                                               <br><strong>p（射手一赢）=0.9*0.5/0.95+0.1*0.5=0.52</strong> 
+                                            </P>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <hr>
+                                    <p><strong>综上：</strong>活下来的概率大约是52%。</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -198,6 +219,25 @@
                 </div>
             </div>
 
+            <!-- Modal -->
+      <div class="modal fade" id="showResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">游戏结束</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                      </div>
+              </div>
+            </div>
+          </div>
 
 
             <!-- 整个页面的页脚 -->

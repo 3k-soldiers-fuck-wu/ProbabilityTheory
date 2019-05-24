@@ -75,7 +75,7 @@ function initGame(){
         认真射击表示朝目标射击，命中率为50%；
         请认真思考后再选择。
         `);
-    $("button").remove();
+    $("#controller button").remove();
     $("#controller").append(`
     <button type="button" class="btn btn-success" onclick="miss()">放空枪</button>
     <button type="button" class="btn btn-danger" onclick="shoot(50,0,1)">认真射击${players[1]}</button>
@@ -86,6 +86,7 @@ function initGame(){
     curPlayer=0;
     nextPlayer=1;
     liveNum=3;
+    $("#showResult .modal-body").find("p").remove();
 }
 //放空枪
 function miss(){
@@ -131,6 +132,10 @@ function shoot(rate,first,last){
         $("#controller").append(`
             <button type="button" class="btn btn-success" onclick="initGame()">重新开始</button>
         `)
+        $("#showResult .modal-body").append(`
+            <p>游戏结束，胜利者是${winner}。</p>
+        `)
+        $("#showResult").modal("show");
 
     }else{
         $("#plot").append(`
