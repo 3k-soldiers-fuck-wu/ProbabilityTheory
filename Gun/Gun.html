@@ -2,7 +2,9 @@
 <html lang="zh">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        charset="utf-8">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
     <!--     Fonts and icons     -->
@@ -45,7 +47,7 @@
                     <li>
                         <a href="../Coin/index.html">
                             <i class="nc-icon nc-alert-circle-i"></i>
-                                <p>抛硬币问题</p>
+                            <p>抛硬币问题</p>
                         </a>
                     </li>
                     <li>
@@ -60,7 +62,7 @@
                             <p>选数策略</p>
                         </a>
                     </li>
-                    <li >
+                    <li>
                         <a href="../OptimalStoppingTheory/index.html">
                             <i class="nc-icon nc-favourite-28"></i>
                             <p>相亲问题</p>
@@ -91,16 +93,16 @@
                         </div>
                         <a class="navbar-brand" href="#">谁能活到最后</a>
                     </div>
-                            <div class="navTabs">
-                                <ul class="navbar-nav" id="navTabs" style="flex-direction:row; font-size:x-large">
-                                    <li class="nav-item active" id="interactionTab" style="margin:0px">
-                                        <a class="nav-link" href="#">互动 <span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item" id="explanationTab">
-                                        <a class="nav-link" href="#">讲解</a>
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="navTabs">
+                        <ul class="navbar-nav" id="navTabs" style="flex-direction:row; font-size:x-large">
+                            <li class="nav-item active" id="interactionTab" style="margin:0px">
+                                <a class="nav-link" href="#">互动 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item" id="explanationTab">
+                                <a class="nav-link" href="#">讲解</a>
+                            </li>
+                        </ul>
+                    </div>
 
 
                 </div>
@@ -126,6 +128,9 @@
                                         赢得百万奖金呢？
                                     </p>
                                     <button type="button" class="btn btn-success" id="start">开始游戏</button>
+                                </div>
+                                <div class="card-footer" id="asdf" style="display: none">
+                                    <a href="#explanationTab" id="seeE">点击查看问题详解</a>
                                 </div>
                             </div>
                         </div>
@@ -184,16 +189,16 @@
                                                 概率是：p（射手一赢）=p（射手一第一种情况赢）*p（发生第一种情况）+p（射手一第二种情况赢）*p（发生第二种情况）
                                             </p>
                                         </blockquote>
-                                            <p>
-                                                p（射手一第一种情况赢）=1，p（发生第一种情况）=0.5，p（发生第二种情况）=0.1*0.5=0.05.
-                                                第二种情况下，第一轮射击完成后，两个未知数p（射手一赢）等于p（射手一第二种情况赢）。用p来表示这个未知数
-                                                可以得出公式：<strong>p=0.5+0.05*p</strong>
-                                                <br><strong>解得p大约为0.53</strong>。
-                                            </p>
-                                            <P>但是，这个概率是在射手二成功击杀射手三的前提下进行计算的，这个前提发生的概率是0.9
-                                               考虑到射手一有可能没能击杀射手三，使用加法法则计算：
-                                               <br><strong>p（射手一赢）=0.9*0.5/0.95+0.1*0.5=0.52</strong> 
-                                            </P>
+                                        <p>
+                                            p（射手一第一种情况赢）=1，p（发生第一种情况）=0.5，p（发生第二种情况）=0.1*0.5=0.05.
+                                            第二种情况下，第一轮射击完成后，两个未知数p（射手一赢）等于p（射手一第二种情况赢）。用p来表示这个未知数
+                                            可以得出公式：<strong>p=0.5+0.05*p</strong>
+                                            <br><strong>解得p大约为0.53</strong>。
+                                        </p>
+                                        <P>但是，这个概率是在射手二成功击杀射手三的前提下进行计算的，这个前提发生的概率是0.9
+                                            考虑到射手一有可能没能击杀射手三，使用加法法则计算：
+                                            <br><strong>p（射手一赢）=0.9*0.5/0.95+0.1*0.5=0.52</strong>
+                                        </P>
                                     </p>
                                 </div>
                                 <div class="card-footer">
@@ -220,24 +225,25 @@
             </div>
 
             <!-- Modal -->
-      <div class="modal fade" id="showResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterTitle">游戏结束</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
+            <div class="modal fade" id="showResult" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">游戏结束</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
-                      </div>
-              </div>
             </div>
-          </div>
 
 
             <!-- 整个页面的页脚 -->

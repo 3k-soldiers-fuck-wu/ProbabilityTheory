@@ -72,6 +72,14 @@ $(document).ready(function () {
         $("#interactionPage").hide("fast");
         $("#explanationPage").show("slow");
     });
+    $("#seeE").click(function () {
+        $("#navTabs").find("li").removeClass("active");
+        $("#navTabs").find("span").remove();
+        $("#explanationTab").addClass("active");
+        $("#explanationTab").find("a").append("<span class=\"sr-only\">(current)</span>")
+        $("#interactionPage").hide("fast");
+        $("#explanationPage").show("slow");
+    });
     sort();
     //随机生成名字和排名
     $("#startPlay").click(function () {
@@ -82,6 +90,7 @@ $(document).ready(function () {
         $("#introduction").hide("fast");
         $("#seeIntro").show("fast");
         $("#play").show("fast");
+        $("#asdf").show();
     });
     $("#seeIntro").click(function () {
         $("#introduction").toggle("fast");

@@ -38,6 +38,14 @@ $(document).ready(function () {
         $("#interactionPage").hide("fast");
         $("#explanationPage").show("slow");
     });
+    $("#seeE").click(function () {
+        $("#navTabs").find("li").removeClass("active");
+        $("#navTabs").find("span").remove();
+        $("#explanationTab").addClass("active");
+        $("#explanationTab").find("a").append("<span class=\"sr-only\">(current)</span>")
+        $("#interactionPage").hide("fast");
+        $("#explanationPage").show("slow");
+    });
     $("#seeResult").click(function(){
         $("#qwerty").hide();
         $("#seeResult").hide();
