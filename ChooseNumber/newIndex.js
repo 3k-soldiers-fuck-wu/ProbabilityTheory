@@ -172,8 +172,8 @@ $(document).ready(function () {
     //电脑猜人
     $("#saveUser").click(function(){
         $("#answer").hide("slow");
-        var numOne=parseInt($("#numOne").val());
-        var numTwo=parseInt($("#numTwo").val());
+        var numOne=Number($("#numOne").val());
+        var numTwo=Number($("#numTwo").val());
         if(numOne!==numTwo && Number.isInteger(numOne) && Number.isInteger(numTwo)){
             checkAws(numOne,numTwo);
             $("#answer").show("fast");
