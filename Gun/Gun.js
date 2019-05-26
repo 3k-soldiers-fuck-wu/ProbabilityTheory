@@ -36,7 +36,7 @@ function initGame(){
                 <p class="card-category">命中率50%</p>
             </div><!--end of card header-->
             <div class="card-body">
-                <img class="img-circle" src="../images/banner01.jpg"/>
+                <img class="img-circle" src="./img/shooter.png"/>
             </div>
         </div><!--end of card-->
     </div><!--end of col md 4-->
@@ -48,7 +48,7 @@ function initGame(){
                 <p class="card-category">命中率90%</p>
             </div><!--end of card header-->
             <div class="card-body">
-                <img class="img-circle" src="../images/banner02.jpg"/>
+                <img class="img-circle" src="./img/shooter2.png"/>
             </div>
         </div><!--end of card-->
     </div><!--end of col md 4-->
@@ -61,7 +61,7 @@ function initGame(){
                 <p class="card-category">命中率100%</p>
             </div><!--end of card header-->
             <div class="card-body">
-                <img class="img-circle" src="../images/banner02.jpg"/>
+                <img class="img-circle" src="./img/shooter3.png"/>
             </div><!--end of card body-->
         </div><!--end of card-->
     </div><!--end of col md 4-->
