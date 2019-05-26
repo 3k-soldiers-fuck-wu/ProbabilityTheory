@@ -2,7 +2,9 @@
 <html lang="zh">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        charset="utf-8">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
     <!--     Fonts and icons     -->
@@ -120,7 +122,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5 class="card-title">怎么找到最好的他</h5>
-									<hr>
+                                    <hr>
                                 </div>
                                 <div class="card-body">
                                     <a href="#" id="seeIntro" style="display:none">查看/隐藏介绍</a>
@@ -132,9 +134,8 @@
                                         <p>那么，你究竟应该怎样尽可能的找到最好的那个人呢？</p>
                                     </div>
                                     <div id="play" style="display:none">
-                                        <img src="img/girl.png">
-                                        <img src="img/boy.png">
-                                        假装这里有图
+                                        <img id="girl" src="img/girl.png">
+                                        <img id="boy" src="img/boy.png">
                                     </div>
                                     <button type="button" class="btn btn-success" id="startPlay">开始相亲</button>
                                     <div id="playing" style="display:none">
@@ -196,12 +197,12 @@
                                     </p>
                                     <p>（如果M在所有n个应聘者中也是最好的一个，那么这个 策略将选不出任何人选）</p>
                                     <p>对于任意的截断值 r，最佳人选被选中的概率是：</p>
-                                    <embed src="img/pic1.svg">
+                                    <img src="img/pic1.png">
                                     <p>
                                         求和符号内概率的计算是基于：如果应聘者 i 是（所有应聘者中的）最佳人选，他被选中当且仅当头 i - 1 个应聘者中的最佳人选 处在头 r - 1
                                         个被拒绝的应聘者中。令 n 趋近无穷大，把 x 表示为 r/n 的极限，令 t 为 i/n，dt 为 1/n，总和可以近似为如下积分：
                                     </p>
-                                    <embed src="img/pic2.svg">
+                                    <img src="img/pic2.png">
                                     <p>
                                         令 P(x) 对 x 的导数为 0，解出 x，我们得到最优的 x 等于 1/e。从而，当 n 增大时，最优截断值趋近于 n/e 最佳人选被选中的概率 为
                                         1/e。
@@ -249,11 +250,11 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <p>所以，经典秘书问题得出面试中应聘到最优面试者的概率是0.368，通俗说，100个人来面试，第36个人或者第37个人是最优应聘者的概率是最大的。</p>
+                                    <!-- <p>所以，经典秘书问题得出面试中应聘到最优面试者的概率是0.368，通俗说，100个人来面试，第36个人或者第37个人是最优应聘者的概率是最大的。</p> -->
                                 </div>
                                 <div class="card-footer">
                                     <hr>
-                                    <p><em>综上：</em>这种问题选择排在37%位置的人或物品。</p>
+                                    <p><em>综上：</em>这种问题要将前37%的人或物品作为参考，之后选择比前37%优秀的。</p>
                                 </div>
                             </div>
                         </div>
@@ -269,7 +270,8 @@
                                     <p>生活中有很多类似于秘书问题的问题，比如说卖房，面对不同买房者提出来的报价，你只能选择接受或者拒绝，如何在买房中选择一个最优的报价是一个需要思考的问题，</p>
                                     <p>不同于单纯的秘书问题的是，每一次带买房者看房的过程，每一次获得报价的过程，也许你需要付出一定的代价，比如说时间，</p>
                                     <p>那如何在这个遴选获选报价所付出的代价和获得最优的报价之间达到达到一个平衡？</p>
-                                    <p>很简单，我们可以设计一个阈值，这个阈值取决于我们遴选报价所付出的成本，毕竟下一轮报价令人更加心动的可能性不会发生任何变化，所以只要报价超过这个阈值，我们就可以接受这个报价。</p>
+                                    <p>很简单，我们可以设计一个阈值，这个阈值取决于我们遴选报价所付出的成本，毕竟下一轮报价令人更加心动的可能性不会发生任何变化，所以只要报价超过这个阈值，我们就可以接受这个报价。
+                                    </p>
                                     <p>
                                         最优停止理论关注的是如何选择时间执行特定行动的问题，与秘书问题的连续性相同的是，生活中我们做出决定的时候，往往具有时间上的不可挽回性，你永远无法回到过去去重新做出选择，
                                         我们没有二次选择机会，如何在合适的时间停止观察做出选择，这是非常重要的问题
@@ -279,23 +281,62 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">相关链接</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="https://www.jianshu.com/p/1e8bcb589723">https://www.jianshu.com/p/1e8bcb589723</a>
-                                        <br>
-                                        <a href="https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C">https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C</a>
-                                    </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">相关链接</h5>
+                                </div>
+                                <div class="card-body">
+                                    <a
+                                        href="https://www.jianshu.com/p/1e8bcb589723">https://www.jianshu.com/p/1e8bcb589723</a>
+                                    <br>
+                                    <a
+                                        href="https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C">https://zh.wikipedia.org/wiki/%E7%A7%98%E6%9B%B8%E5%95%8F%E9%A1%8C</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
 
+            <div class="modal fade" id="areYouSure" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">提示</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>你确定要选择这个人吗？</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">我再想想</button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="seeResult()">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="modal fade" id="seeResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">提示</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p id="answer"> </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                onclick="seeInfo()">查看详细信息</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- 整个页面的页脚 -->
             <footer class="footer footer-black  footer-white ">

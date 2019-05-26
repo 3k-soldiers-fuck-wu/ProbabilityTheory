@@ -15,6 +15,7 @@ function randomNum(minNum, maxNum) {
 var number = 0;
 var level = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 var names = new Array("Fred", "Eric", "Bob", "Leo", "Paul", "Sam", "Van", "Cary", "Ben", "Alex", "Abel", "Dats", "Gino", "Jack", "Jame", "Luke", "Ryan", "Simon", "Tony");
+var boys = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 function sort() {
     for (var i = 0; i < 10; i++) {
@@ -22,6 +23,10 @@ function sort() {
         var temp = level[i];
         level[i] = level[random];
         level[random] = temp;
+        random = randomNum(0, 9);
+        temp = boys[i];
+        boys[i] = boys[random];
+        boys[random] = temp;
     }
     for (var i = 0; i < names.length; i++) {
         var random = randomNum(0, names.length - 1);
@@ -37,6 +42,7 @@ function startPlay() {
         "<th class=\"text-center\">" + "1" + "</th>\n" +
         "<th class=\"realRank text-center\">" + level[number] + "</th>\n" +
         "</tr>");
+    $("#boy").attr("src", "img/boy" + boys[number] + ".png");
     number++;
     $("#startPlay").hide();
     $("#playing").show("fast");
@@ -96,6 +102,7 @@ $(document).ready(function () {
             "<th class=\"text-center\">" + relativeRank + "</th>\n" +
             "<th class=\"realRank  text-center\">" + level[number] + "</th>\n" +
             "</tr>");
+        $("#boy").attr("src", "img/boy" + boys[number] + ".png");
         $(".rankLine").show("fast");
         number++;
         if (number == 10) {
@@ -110,17 +117,30 @@ $(document).ready(function () {
         $("#finish").show();
         // console.log($("#rankTable"));
         $("#rankBody").empty();
+        $(".realRank").hide();
         startPlay();
     });
 });
 
 function confirmAgain() {
-    var r = confirm("确定要选这个人吗？")
-    if (r == true) {
-        alert(names[number - 1] + "在10个人中是第" + level[number - 1] + "优秀的。\n点击查看详细信息");
-        $(".realRank").show("fast");
-        $("#nextPlayer").hide();
-        $("#finish").hide();
-        $("#playAgain").show();
-    }
+    $("#areYouSure").modal("show");
+    // var r = confirm("确定要选这个人吗？")
+    // if (r == true) {
+    //     alert(names[number - 1] + "在10个人中是第" + level[number - 1] + "优秀的。\n点击查看详细信息");
+    //     $(".realRank").show("fast");
+    //     $("#nextPlayer").hide();
+    //     $("#finish").hide();
+    //     $("#playAgain").show();
+    // }
+}
+
+function seeResult(){
+    $("#answer").html(names[number - 1] + "在10个人中是第" + level[number - 1] + "优秀的。");
+    $("#seeResult").modal("show");
+}
+function seeInfo() {
+    $(".realRank").show("fast");
+    $("#nextPlayer").hide();
+    $("#finish").hide();
+    $("#playAgain").show();
 }
