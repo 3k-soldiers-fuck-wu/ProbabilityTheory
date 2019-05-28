@@ -9,6 +9,7 @@ var curPlayer;
 var nextPlayer;
 var winner;
 var liveNum=0;
+var tar=0;
 //随机数生成器
 function randomNum(minNum,maxNum){
     switch(arguments.length){ 
@@ -99,7 +100,7 @@ function miss(){
     $("#controller").find("button").remove();
     check();
     $("#controller").append(`
-        <button type="button" class="btn btn-success" onclick="shoot(${rates[curPlayer]},${curPlayer},${nextPlayer})">下一回合</button>
+        <button type="button" class="btn btn-success" onclick="shoot(${rates[curPlayer]},${curPlayer},${tar})">下一回合</button>
     `)
 }
 //射击，改变生死情况
@@ -147,11 +148,11 @@ function shoot(rate,first,last){
                 <button type="button" class="btn btn-success" onclick="miss()">放空枪</button>
             `)
             $("#controller").append(`
-                <button type="button" class="btn btn-success" onclick="shoot(${rates[0]},${curPlayer},${nextPlayer})">射击${players[nextPlayer]}</button>
+                <button type="button" class="btn btn-success" onclick="shoot(${rates[0]},${curPlayer},${tar})">射击${players[nextPlayer]}</button>
             `)
         }else{
             $("#controller").append(`
-                <button type="button" class="btn btn-success" onclick="shoot(${rates[curPlayer]},${curPlayer},${nextPlayer})">下一回合</button>
+                <button type="button" class="btn btn-success" onclick="shoot(${rates[curPlayer]},${curPlayer},${tar})">下一回合</button>
             `)
         }
     }
@@ -188,11 +189,8 @@ function check(){
         if(isDead[nextPlayer]){
             nextPlayer=(nextPlayer+1)%3;
         }
-        if(curPlayer==2 && nextPlayer==0 && !isDead[1]){
-            nextPlayer=1;
-        }
     }
-
+    tar=(!isDead[2]&&curPlayer!=2)?2:(!isDead[1]&&curPlayer!=1)?1:0;
 }
 
 $(document).ready(function () {
