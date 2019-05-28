@@ -82,6 +82,14 @@ $(document).ready(function () {
         $("#interactionPage").hide("fast");
         $("#explanationPage").show("slow");
     });
+    $("#seeE").click(function () {
+        $("#navTabs").find("li").removeClass("active");
+        $("#navTabs").find("span").remove();
+        $("#explanationTab").addClass("active");
+        $("#explanationTab").find("a").append("<span class=\"sr-only\">(current)</span>")
+        $("#interactionPage").hide("fast");
+        $("#explanationPage").show("slow");
+    });
     $("#startPlay").click(function () {
         $("#startPlay").hide();
         $("#p1").hide("fast");

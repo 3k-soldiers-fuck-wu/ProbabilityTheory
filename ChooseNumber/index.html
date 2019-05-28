@@ -2,7 +2,9 @@
 <html lang="zh">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        charset="utf-8">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet">
     <!--     Fonts and icons     -->
@@ -127,9 +129,10 @@
                                     <h6 id="num2"></h6>
                                     <div id="w1">
                                         <p>欢迎来到人机对抗！！！
-                                        <br>本次游戏采取五局三胜制。
-                                        <br>游戏规则如下：<br>电脑随机生成两个数字，你将知道其中一个数字，请猜测另一个数字比已知数字大还是小</p>
-                                        <button type="button" class="btn btn-success" id="createNum" onclick="change()">生成数字</button>
+                                            <br>本次游戏采取五局三胜制。
+                                            <br>游戏规则如下：<br>电脑随机生成两个数字，你将知道其中一个数字，请猜测另一个数字比已知数字大还是小</p>
+                                        <button type="button" class="btn btn-success" id="createNum"
+                                            onclick="change()">生成数字</button>
                                     </div>
                                 </div>
                             </div>
@@ -211,6 +214,9 @@
                                         猜测小，如果已知的数比基准数小，则猜测大。
                                     </p>
                                 </div>
+                                <div class="card-footer">
+                                    <a href="#explanationTab" id="seeE">点击查看问题详解</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -265,44 +271,48 @@
                 </div>
             </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="wrongInput" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">网页提示</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <!-- Modal -->
+            <div class="modal fade" id="wrongInput" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">网页提示</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>请输入两个不同的整数（包含负数），如<h6>-10</h6>
+                                <h6>20</h6>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-              <p>请输入两个不同的整数（包含负数），如<h6>-10</h6><h6>20</h6></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="wol" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterTitle">网页提示</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+            <!-- Modal -->
+            <div class="modal fade" id="wol" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">网页提示</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">确定</button>
-                </div>
-              </div>
             </div>
-          </div>
 
             <!-- 整个页面的页脚 -->
             <footer class="footer footer-black  footer-white ">
